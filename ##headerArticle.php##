@@ -1,0 +1,50 @@
+i?php 
+
+session_start();
+?>
+
+
+
+ihead>
+imeta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /> 
+ilink href="../CSS/headerArticle.css" rel="stylesheet" type="text/css">
+i/head>
+
+	idiv id="bandeConnexion">
+		i?php if(connecter()){ ?>
+		ip id="statutConnexion">Connecté en tant que : ia href="utilisateur.page.php">i?php if(isset($_SESSION['UTILISATEUR'])){ echo $_SESSION['UTILISATEUR']->PSEUDONYME(); } ?>i/a>i/p>
+		ibutton id="deconnexion" name="deconnexion" type="submit">Deconnexioni/button>
+		i?php }else{ ?>
+		ip id="lienConnexion">ia href="connexion.php">Se connecteri/a>i/p>
+		i?php } ?>
+	i/div>
+	iheader>
+		
+		
+
+		ih1 id="categorie"> Categoriei/h1>
+		ih1 id="titreBlog">Sofiane's Chroniclei/h1>
+										
+						
+					
+				
+				
+		inav id="navigationHeader">
+			iimg src="../image/bandeNavigation.png" alt="bande de navigation">
+			iul>
+				ili id="alaUne">ia href="../index.php">Homei/a>i/li>
+				ili id="article">ia href="../lesArticle.page.php">Articlei/a>i/li>
+				ili>ia href="../ecrireArticle.php">Ecrire un articlei/a>i/li>
+
+				ili id="video">ia href="#">Videoi/a>i/li>
+				ili id="presentation">ia href="#">Qui sommes nous ?i/a>i/li>
+			i/ul>
+			iimg src="../image/bandeNavigation.png" alt="bande de navigation">
+			
+		i/nav>
+	i/header>
+	
+	iscript src="javaScript/header.js">
+	
+	
+	i/script>

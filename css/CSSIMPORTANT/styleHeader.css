@@ -1,0 +1,205 @@
+﻿@font-face
+{	
+	font-family:CloisterBlack;
+	src: url('../../Police/CloisterBlack.ttf');
+}
+
+@font-face
+{	
+	font-family:Farnham;
+	src: url('../../Police/Farnham.ttf');
+	
+}
+
+
+@font-face
+{	
+	font-family:FarnhamText-RegularItalLF;
+	src: url('../../Police/FarnhamText-RegularItalLF.ttf');
+	
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'), url("../../Police/9k-RPmcnxYEPm8CNFsH2gg.woff") format('woff');
+}
+
+
+header
+{
+	width:100%;
+	margin:auto;
+}
+
+#bandeConnexion{
+margin:auto;
+}
+
+#bandeConnexion a {
+text-decoration:none;
+color:white;
+border:1px #C12020 solid;
+background-color:#C12020;
+
+
+}
+
+
+
+#statutConnexion{
+	font-size: 13px;
+	text-align:center;
+	display:inline-block;
+
+}
+
+#deconnexion{
+	display:inline-block;
+}
+#statutConnexion a{
+	text-decoration:none;
+	font-size: 13px;
+	line-height: 16px;
+}
+#statutConnexion a:hover
+{
+	color:#C12020;
+	line-height: 16px;
+	
+}
+
+#lienConnexion a{
+	color:white;
+	text-decoration:none;
+	font-size: 13px;
+	line-height: 16px;
+}
+
+#lienConnexion a:hover
+{
+	color:#C12020;
+	font-size: 13px;
+	line-height: 16px;
+	
+}
+
+
+
+#titreBlog
+{
+
+	font-family:CloisterBlack;
+	color:#202020;
+	text-align:center;
+	font-size:48px;
+	margin:auto;
+	vertical-align:top;
+	margin:auto;
+
+
+}
+
+#reseauSociaux{
+text-align:center;
+height:30px;
+}
+
+#like{
+	display:inline-block;
+	
+}
+
+
+#like a img:hover{
+	opacity:0.5;
+}
+
+#followTwitter{
+	display:inline-block;
+	vertical-align:top;
+}
+
+#followTwitter a img:hover{
+	opacity:0.5;
+}
+
+
+#youtube{
+	display:inline-block;
+	vertical-align:top;
+}
+
+#youtube a img:hover{
+	opacity:0.5;
+}
+
+
+#dateHeure
+{
+	text-align:center;
+	margin:auto;
+	font-family:LM Mono Light 10;
+	font-size:15px;
+	
+}
+
+
+.citations
+{
+
+   	margin:auto;
+	text-align:center;
+	font-family:LM Mono Light 10;
+	font-size:19px;
+	color:white;
+	
+
+}
+
+
+
+
+#navigationHeader 
+{
+	margin-top:20px;
+	/*border:1px solid black;*/
+}
+
+
+#navigationHeader ul
+{
+	list-style-type:none; /*Enlever les puces*/
+	text-align:center;
+	margin:auto;
+}
+
+#navigationHeader li
+{
+	width:200px;
+	display:inline-block;
+	text-align:center;
+}
+
+
+.bandeNavigation
+{
+	display:block;
+	margin:auto;
+	width:90%;
+}
+
+
+
+@media only screen and (max-width: 744px)
+{
+    
+	#sse1{
+		display:none;
+	}
+	
+
+}
+
+
+

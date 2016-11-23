@@ -1,0 +1,176 @@
+<?php
+spl_autoload_register('chargerClasse'); // On enregistre la fonction en autoload pour qu'elle soit appelée dès qu'on instanciera une classe non déclarée.
+
+class article
+{
+	private $_ID_ARTICLE;
+	private $_ID_UTILISATEUR;
+	private $_ID_CATEGORIE;
+	private $_ID_VIDEO;
+	private $_ID_IMAGE_1;
+	private $_TITRE;
+	private $_INTRODUCTION;
+	private $_CONTENU;
+	private $_RESUME;
+	private $_DATE_REALISATION;
+	private $_LAST_UPDATE;
+	private $_PUBLIER;
+
+		
+	// getters
+	public function ID_ARTICLE()
+	{
+		return $this->_ID_ARTICLE;
+	}
+	
+	public function ID_UTILISATEUR()
+	{
+		return $this->_ID_UTILISATEUR;
+	}
+	
+	public function ID_CATEGORIE()
+	{
+		return $this->_ID_CATEGORIE;
+	}
+	
+	public function ID_VIDEO()
+	{
+		return $this->_ID_VIDEO;
+	}
+		
+	public function ID_IMAGE_1()
+	{
+		return $this->_ID_IMAGE_1;
+	}
+	
+	public function TITRE()
+	{
+		return $this->_TITRE;
+	}
+	
+	public function INTRODUCTION()
+	{
+		return $this->_INTRODUCTION;
+	}
+	
+	public function CONTENU()
+	{
+		return $this->_CONTENU;
+	}
+	
+	public function RESUME()
+	{
+		return $this->_RESUME;
+	}
+	
+	public function DATE_REALISATION()
+	{
+		return $this->_DATE_REALISATION;
+	}
+	
+	public function LAST_UPDATE()
+	{
+		return $this->_LAST_UPDATE;
+	}
+	public function PUBLIER()
+	{
+		return $this->_PUBLIER;
+	}
+
+	public function VUES()
+	{
+		$bdd = connexionBdd();
+		$articleManager = new articleManager($bdd);
+
+		return $articleManager->nombreVues($this);
+	}
+	//setters
+	
+	public function setID_ARTICLE($idArticle)
+	{
+		$this->_ID_ARTICLE = $idArticle;
+	}
+	
+	public function setID_UTILISATEUR($idUtilisateur)
+	{
+		$this->_ID_UTILISATEUR = $idUtilisateur;
+	}
+	
+	public function setID_CATEGORIE($idCategorie)
+	{
+		$this->_ID_CATEGORIE = $idCategorie;
+	}
+	
+	public function setID_VIDEO($idVideo)
+	{
+		$this->_ID_VIDEO = $idVideo;
+	}
+	
+	
+	public function setID_IMAGE_1($idImageDescription)
+	{
+		$this->_ID_IMAGE_1 = $idImageDescription;
+	}
+	
+	public function setTITRE($titre)
+	{
+		$this->_TITRE = $titre;
+	}
+	
+	public function setINTRODUCTION($introduction)
+	{
+		$this->_INTRODUCTION = $introduction;
+	}
+	
+	public function setCONTENU($contenu)
+	{
+		$this->_CONTENU = $contenu;
+	}
+	
+	public function setRESUME($resume)
+	{
+		$this->_RESUME = $resume;
+	}
+	
+	public function setDATE_REALISATION($dateRealisation)
+	{
+		$this->_DATE_REALISATION = $dateRealisation;
+	}
+	
+	public function setLAST_UPDATE($lastUpdate)
+	{
+		$this->_LAST_UPDATE = $lastUpdate;
+	}
+	
+	public function setPublier($publier)
+	{
+		$this->_PUBLIER = $publier;
+	}
+	
+	
+
+	
+	// hydratation
+	
+	public function hydrate(array $donnees)
+	{
+		foreach($donnees as $key => $value)
+		{
+			$method = 'set'.$key;
+			if(method_exists($this,$method))
+			{
+				$this->$method($value);
+			}
+		}
+	}
+
+	
+	//constructeur de classe
+	public function __construct(array $donnees)
+	{
+		$this->hydrate($donnees);
+	}
+
+}
+
+?>

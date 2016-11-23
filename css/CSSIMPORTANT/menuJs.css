@@ -1,0 +1,111 @@
+﻿
+/* --------- */
+
+
+/* nav */
+.nav {
+	border-top:thin #DDDDDD solid;
+	border-bottom:thin #DDDDDD solid;
+	margin:20 0 20 0;
+	padding:20 0 20 0;
+	background-color:#242323;
+}
+.nav ul {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+.nav li {
+	padding: 0;
+	list-style: none;
+	display: inline-block;
+	font-size:20px;
+
+}
+.nav a {
+	padding: 20px;
+	text-decoration: none;
+	color: #999;
+	transition:background 0.5s;
+	}
+.nav a:hover {
+	background: #C12020;
+	color: #fff;
+
+}
+.nav .current a {
+	background: #C12020;
+	color: #fff;
+}
+
+/* right nav */
+.nav.right ul {
+	text-align: right;
+}
+
+/* center nav */
+.nav.center ul {
+	text-align: center;
+}
+
+
+
+
+@media screen and (max-width: 680px) {
+	.nav {
+		position: relative;
+		min-height: 40px;
+	}	
+	.nav ul {
+		width: 180px;
+		padding: 5px 0;
+		margin:auto;
+		border: solid 1px #aaa;
+		background: #fff url(images/icon-menu.png) no-repeat 10px 11px;
+		border-radius: 5px;
+		box-shadow: 0 1px 2px rgba(0,0,0,.3);
+
+	}
+	.nav li {
+		display: none; /* hide all <li> items */
+		margin: 0;
+	}
+	.nav .current {
+		display: block; /* show only current <li> item */
+	}
+	.nav a {
+		display: block;
+		padding: 5px 5px 5px 32px;
+		text-align: left;
+	}
+	.nav .current a {
+		background: none;
+		color: #666;
+	}
+
+	/* on nav hover */
+	.nav ul:hover {
+		background-image: none;
+	}
+	.nav ul:hover li {
+		display: block;
+		margin: 0 0 5px;
+	}
+	.nav ul:hover .current {
+		background: url(images/icon-check.png) no-repeat 10px 7px;
+	}
+
+	/* right nav */
+	.nav.right ul {
+		left: auto;
+		right: 0;
+	}
+
+	/* center nav */
+	.nav.center ul {
+		left: 50%;
+		margin-left: -90px;
+	}
+	
+}
+

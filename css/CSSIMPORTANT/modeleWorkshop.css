@@ -1,0 +1,74 @@
+﻿#container{
+	width:100%;
+	margin:auto;
+}
+
+#titreWorkshop,#location,#dateDebut,#dateFin,#introduction,#image,#contenu,#price,#deposit,#container,#upcomingWorkshop,#workshopContainer,#upcomingEvents
+{
+	margin:auto;
+}
+
+#workshopContainer{
+	width:80%;
+	border-left:1px #DDDDDD solid;
+	border-right:1px #DDDDDD solid;
+
+}
+
+#titreWorkshop
+{
+	font-size: 44px;
+	margin: auto;
+	margin-bottom: 5px;
+	text-align:center;
+
+}
+
+#location,#dateDebut,#dateFin
+{
+	font-size:20px;
+}
+.RedColour
+{
+	color:#C12020;
+
+}
+#dateDebut{
+	
+}
+#dateFin{
+	
+}
+#introduction, #contenu{
+	margin:auto;
+	text-align:center;
+	border-top:1px #DDDDDD solid;
+	border-bottom:1px #DDDDDD solid;
+	width:75%;
+	font-size:19px;
+	margin-bottom:15px;
+	margin-top:15px;
+
+
+}
+#image{
+	display:block;
+	margin:auto;
+	width:75%;
+	
+}
+#video iframe
+{
+	display:block;
+	width:75%;
+	height:70%;
+	margin:auto;
+
+}
+#price{
+	
+}
+#deposit{
+	
+}
+

@@ -1,0 +1,104 @@
+﻿#categories{
+	display:inline-block;
+	vertical-align:top;
+	width:17%;
+	}
+	
+
+#categories h3{
+	background-color:#227B24;
+	text-align: center;
+	font-family:Farnham-textBold;
+	color:white;
+	margin:auto;
+
+}
+
+
+#categories p a{
+	font-family:FarnhamText-Regular;
+	color:black;
+	font-weight:bold;
+	text-decoration:none;
+
+}
+
+#categories p a:hover{
+	color:#227B24;
+	font-weight:bold;
+	text-decoration:underline;
+
+}
+
+
+#lienPage{
+	text-align:center;
+	border:thin #DDDDDD solid;
+}
+
+#lienPage, #lienPage a{
+	color:#C12020;
+	font-size:25px;
+	
+
+}
+#lesPlusVues{
+	border:thin #DDDDDD solid;
+}
+#lesPlusVues h1{
+	margin:auto;
+	text-align:center;
+	color:#202020;
+	margin-bottom:5px;
+}
+
+#lesPlusVues #unArticle{
+	width:19%;
+	display:inline-block;
+	vertical-align:top;
+}
+
+#lesPlusVues #unArticle h2{
+	display:inline-block;
+	width:100%;
+	text-align:center;
+	margin-top:5px;
+}
+
+
+#lesPlusVues #unArticle img{
+	display: block;
+	width:100%;
+	
+}
+
+.currentCategorie{
+	color:yellow;
+}
+
+
+@media only screen and (max-width: 800px)
+{
+	#categories
+	{
+	position:fixed;
+	}
+	
+	#lienPage{
+	text-align:right;
+	width:50%;
+	border:1px white solid;
+	}
+	#lesPlusVues{
+	width:80%;
+	margin-top:10px;
+	}
+	
+	#lesPlusVues #unArticle h2
+	{
+		font-size:10px;
+	}
+
+
+
+}

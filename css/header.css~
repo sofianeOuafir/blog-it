@@ -1,0 +1,44 @@
+/* navigation bar */
+.container-fluid
+{
+	background-color: #efefef;
+}
+
+
+/* brand and main links */
+.container-fluid .navbar-header .navbar-brand, .container-fluid .navbar-collapse .navbar-nav li a {
+	color:#a9a9a9;
+	font-size: 20px;
+}
+
+/* link active, link active hover */
+.container-fluid .navbar-collapse .navbar-nav .active a, .container-fluid .navbar-collapse .navbar-nav .active a:hover
+{
+	background-color: #e14658;
+	color:#caebf2;
+}
+
+/* signed in as... */
+.container-fluid .navbar-collapse .navbar-text 
+{
+	font-size: 15px;
+	color:#a9a9a9;
+}
+
+/* link hover and brand hover */
+.container-fluid .navbar-collapse .navbar-nav li a:hover
+{
+	background-color: #e14658;
+	color: #caebf2;
+}
+
+.container-fluid .navbar-header .navbar-brand:focus, .container-fluid .navbar-header .navbar-brand:hover
+{
+color:#a9a9a9;
+}
+.badge
+{
+background-color: red !important;
+margin-top: -5px;
+}
+

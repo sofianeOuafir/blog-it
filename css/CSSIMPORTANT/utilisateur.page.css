@@ -1,0 +1,49 @@
+﻿#container{
+	width:100%;
+}
+input,textarea{
+	border-radius:5px;
+}
+#container #infosPersonnelles{
+	width:79%;
+	display:inline-block;
+	vertical-align:top;
+
+}
+#container #infosPersonnelles form{
+	margin:auto;
+
+}
+
+#introduction{
+width:700px;
+height:200px;
+}
+
+
+#contenu{
+width:700px;
+height:400px;
+}
+
+
+#container #media{
+	width:20%;
+	display:inline-block;
+	vertical-align:top;
+
+}
+
+#media #imageUtilisateur img{
+
+	display:block;
+	width:200px;
+	margin-bottom:5px;
+}
+#media #videoUtilisateur iframe{
+display:block;
+	width:200px;
+	height:150px;
+}
+
+

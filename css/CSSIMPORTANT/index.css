@@ -1,0 +1,516 @@
+﻿@font-face
+{	
+	font-family:Farnham-text;
+	src:url('../../Police/Farnham-text.ttf');
+	font-family:FarnhamTextRegular;
+	src:url('../../Police/FarnhamTextRegular.ttf');
+}
+
+@font-face
+{	
+	font-family:Farnham-textBold;
+	src:FarnhamText-Bold.pfb;
+	
+}
+body{
+	width:100%;
+	font-family:Farnham-textBold;
+}
+#corps{
+	width:100%;
+	margin:auto;
+
+}
+#lesBlocks{
+	width:82%;
+	display:inline-block;
+}
+#blocGauche{
+	display:inline-block;
+	border-right:thin #DDDDDD solid;
+	width:60%;
+}
+/*article Principal*/
+#articlePrincipal{
+width:100%;
+}
+
+#articlePrincipal #titreArticle
+{
+	font-size:30px;
+	text-align:left;
+	margin:auto;
+	color:#202020;
+	text-decoration:none;
+}
+
+
+
+#articlePrincipal #imgPrincipal{
+display:block;
+width:90%;
+}
+
+#articlePrincipal #introduction
+{
+	font-size:15px;
+}
+
+#articlePrincipal #auteur a
+{
+	font-weight:bold;
+	color:#C12020;
+}
+
+#blocDroite{
+	display:inline-block;
+	vertical-align:top;
+	border-right:thin #DDDDDD solid;
+	width:39%;
+}
+#separationArticleSecondaires{
+	display:block;
+	margin:auto;
+	width:90%;
+}
+/*article secondaire*/
+#articleSecondaire1{
+	
+	width:100%;
+	vertical-align:top;
+	margin-bottom:10px;
+	border-bottom:thin #DDDDDD solid;
+
+	
+	
+}
+
+
+#articleSecondaire1 #titreArticle1
+{
+	text-decoration:none;
+	font-size:30px;
+	text-align:left;
+	margin:auto;
+	font-family:Farnham-textBold;
+	color:#202020;
+	display:block;
+	
+}
+
+
+#articleSecondaire1 #introduction
+{
+
+	font-size:15px;
+	display:inline-block;
+	width:49%;
+	margin:auto;
+
+	
+}
+
+#articleSecondaire1 #imgSecondaire1
+{
+display:inline-block;
+width:49%;
+vertical-align: top;
+
+
+}
+
+
+/*Troisieme article */
+
+#articleSecondaire2
+{
+	
+	width:100%;
+	vertical-align:top;
+	margin-bottom:10px;
+	border-bottom:thin #DDDDDD solid;
+
+}
+
+#articleSecondaire2 #titreArticle2
+{
+	text-decoration:none;
+	font-size:30px;
+	text-align:left;
+	margin:auto;
+	font-family:Farnham-textBold;
+	color:#202020;
+	display:block;
+	
+}
+
+
+#articleSecondaire2 #introduction
+{
+
+	font-size:15px;
+	display:inline-block;
+	width:49%;
+	margin:auto;
+	
+}
+
+#articleSecondaire2 #imgSecondaire2
+{
+display:inline-block;
+width:49%;
+vertical-align: top;
+
+
+}
+
+/*quatrieme Article*/
+
+
+#articleSecondaire3
+{
+	
+	width:100%;
+	vertical-align:top;
+	margin-bottom:10px;
+	border-bottom:thin #DDDDDD solid;
+
+}
+
+#articleSecondaire3 #titreArticle3
+{
+	text-decoration:none;
+	font-size:30px;
+	text-align:left;
+	margin:auto;
+	font-family:Farnham-textBold;
+	color:#202020;
+	display:block;
+	
+}
+
+
+#articleSecondaire3 #introduction
+{
+
+	font-size:15px;
+	display:inline-block;
+	width:49%;
+	margin:auto;
+	
+}
+
+#articleSecondaire3 #imgSecondaire3
+{
+display:inline-block;
+width:49%;
+vertical-align: top;
+
+
+}
+
+
+
+
+/* Les derniers articles */
+#dernierArticle{
+	display:inline-block;
+	vertical-align:top;
+	width:17%;
+	
+}
+
+#dernierArticle #titre{
+	
+	background-color:#C12020;
+	text-align: center;
+	font-family:Farnham-textBold;
+	color:white;
+	margin:auto;
+
+
+}
+#dateArticle{
+	margin:auto;
+	font-family:FarnhamText-Regular;
+	color:#C12020;
+}
+	
+#dernierArticle a
+{
+	font-family:FarnhamText-Regular;
+	color:black;
+	font-weight:bold;
+	text-decoration:none;
+
+}
+
+#dernierArticle a:hover{
+	color:#C12020;
+	text-decoration:underline;
+
+}
+
+
+@media only screen and (max-width: 1040px)
+{
+	#articlePrincipal #titreArticle, #articleSecondaire1 #titreArticle1, #articleSecondaire2 #titreArticle2, #articleSecondaire3 #titreArticle3
+	{
+	font-size:20px;
+	}
+}
+
+
+@media only screen and (max-width: 800px)
+{
+    
+	#dernierArticle{
+		display:none;
+	}	
+	
+	#lesBlocks{
+		width:100%;
+	}
+
+
+}
+
+@media screen and (max-width: 680px) 
+{
+	
+    #blocDroite
+    {
+		display:block;
+		vertical-align:top;
+		border-right:thin #DDDDDD solid;
+		width:100%;
+
+	}
+
+	#blocGauche
+	{
+		display:block;
+		border-right:thin #DDDDDD solid;
+		width:100%;
+	}
+	
+	#articlePrincipal #imgPrincipal{
+	margin:auto;
+	}
+	
+	#articlePrincipal #titreArticle
+	{
+		display:block;
+		text-align:center;
+		color:#C12020;
+		font-size:25px;
+
+	}
+	
+	#articlePrincipal #auteur
+	{
+		
+		text-align:center;
+	}
+	
+	#articlePrincipal #introduction
+	{
+		text-align:center;
+	}
+	
+	#articleSecondaire1 #titreArticle1, #articleSecondaire3 #titreArticle3, #articleSecondaire2 #titreArticle2
+	{
+		text-align:center;
+		color:#C12020;
+		font-size:25px;
+
+	}
+	
+	
+	#articleSecondaire1 #imgSecondaire1
+	{
+		display:block;
+		width:90%;
+		margin:auto;
+	}
+	
+	#articleSecondaire2 #imgSecondaire2
+	{
+		display:block;
+		width:90%;
+		margin:auto;
+	}
+	
+	#articleSecondaire3 #imgSecondaire3
+	{
+		display:block;
+		width:90%;
+		margin:auto;
+	}
+
+
+	#articleSecondaire1 #introduction
+	{
+	
+		font-size:15px;
+		display:block;
+		width:100%;
+		text-align:center;
+		margin-top:10px;
+		
+	}
+	
+	#articleSecondaire2 #introduction
+	{
+	
+		font-size:15px;
+		display:block;
+		width:100%;
+		text-align:center;
+		margin-top:10px;
+
+	
+		
+	}
+	
+	#articleSecondaire3 #introduction
+	{
+	
+		font-size:15px;
+		display:block;
+		width:100%;
+		text-align:center;
+		margin-top:10px;
+
+	
+		
+	}
+	
+	#separationArticleSecondaires{
+	display:none;
+}
+
+
+}
+
+
+
+@media all and (max-device-width: 680px)
+{
+    #blocDroite
+    {
+		display:block;
+		vertical-align:top;
+		border-right:thin #DDDDDD solid;
+		width:100%;
+
+	}
+
+	#blocGauche
+	{
+		display:block;
+		border-right:thin #DDDDDD solid;
+		width:100%;
+	}
+	
+	#articlePrincipal #imgPrincipal{
+	margin:auto;
+	}
+	
+	#articlePrincipal #titreArticle
+	{
+		text-align:center;
+		color:#C12020;
+		font-size:25px;
+	}
+	
+	#articlePrincipal #auteur
+	{
+		
+		text-align:center;
+	}
+	
+	#articlePrincipal #introduction
+	{
+		text-align:center;
+	}
+	
+	#articleSecondaire1 #titreArticle1, #articleSecondaire3 #titreArticle3, #articleSecondaire2 #titreArticle2
+	{
+		text-align:center;
+		color:#C12020;
+		font-size:25px;
+
+	}
+	
+		
+	#articleSecondaire1 #imgSecondaire1
+	{
+		display:block;
+		width:90%;
+		margin:auto;
+	}
+	
+	#articleSecondaire2 #imgSecondaire2
+	{
+		display:block;
+		width:90%;
+		margin:auto;
+	}
+	
+	#articleSecondaire3 #imgSecondaire3
+	{
+		display:block;
+		width:90%;
+		margin:auto;
+	}
+
+
+	#articleSecondaire1 #introduction
+	{
+	
+		font-size:15px;
+		display:block;
+		width:100%;
+		text-align:center;
+		margin-top:10px;
+		
+	}
+	
+	#articleSecondaire2 #introduction
+	{
+	
+		font-size:15px;
+		display:block;
+		width:100%;
+		text-align:center;
+		margin-top:10px;
+
+	
+		
+	}
+	
+	#articleSecondaire3 #introduction
+	{
+	
+		font-size:15px;
+		display:block;
+		width:100%;
+		text-align:center;
+		margin-top:10px;
+
+	
+		
+	}
+	
+	#separationArticleSecondaires{
+	display:none;
+	
+	
+	
+	
+}
+
+}
+
+

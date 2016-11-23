@@ -1,0 +1,125 @@
+﻿@font-face
+{	
+	font-family:Farnham-text;
+	src:url('../../Police/Farnham-text.ttf');
+	font-family:FarnhamTextRegular;
+	src:url('../../Police/FarnhamTextRegular.ttf');
+}
+
+@font-face
+{	
+	font-family:Farnham-textBold;
+	src:FarnhamText-Bold.pfb;
+	
+}
+
+body{
+	font-family:FarnhamText-RegularItalLF;
+}
+
+#container{
+	width:100%;
+	margin:auto;
+}
+
+
+article{
+	width:82%;
+	display:inline-block;
+}
+
+
+
+article #titreArticle
+{
+	font-size:30px;
+	margin:auto;
+	margin-bottom:5px;
+	color:#202020;
+
+}
+
+#introduction{
+
+	margin:auto;
+	font-size:20px;
+
+}
+
+#image{
+	display:block;
+	margin:auto;
+	width:75%;
+}
+
+#contenu
+{
+	font-size:20px;
+}
+
+#videoYoutube iframe{
+	display:block;
+	width:75%;
+	height:70%;
+	margin:auto;
+}
+
+#workshops{
+	display:inline-block;
+	vertical-align:top;
+	width:17%;
+	position:fixed;
+
+}
+
+#workshops #upcomingEvents
+{
+	margin:auto;
+	background-color:#C12020;
+	color:white;
+	text-align: center;
+	font-family:Farnham-textBold;
+	margin:auto;
+	margin-bottom:5px;
+
+}
+
+#workshop{
+	border:1px #C12020 solid;
+	margin:auto;
+	margin-bottom:10px;
+}
+#workshop h4
+{
+	margin:auto;
+	text-align:center;
+
+}
+#workshop p
+{
+	margin:auto;
+	text-align:center;
+}
+
+#workshop #lienWorkshop
+{
+	background-color:#C12020;
+	color:white;
+	text-decoration:none;
+	
+	
+}
+
+@media only screen and (max-width: 650px)
+{
+    article{
+	width:100%;
+}
+	#workshops{
+	display:none;
+}
+
+
+}
+
+

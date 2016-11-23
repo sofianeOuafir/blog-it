@@ -1,0 +1,233 @@
+﻿/* block des article de bas de page */ 
+#articleBasPage{
+
+	width:100%;
+}
+
+/* 5eme article */ 
+
+#articleBasPage4{
+	width:49%;
+	display:inline-block;
+	border-right:thin #DDDDDD solid;
+}
+
+#articleBasPage4 #imgBasPage4{
+	display:block;
+
+	width:100%;
+	margin:auto;
+
+}
+#articleBasPage4 h2{
+	width:100%;
+
+	text-align:left;
+	margin:auto;
+	margin-top:5px;
+}
+#articleBasPage4 #titreArticle4{
+	font-size:30px;
+	margin:auto;
+	font-family:Farnham-textBold;
+	color:#202020;
+	text-decoration:none;
+
+
+}
+
+#articleBasPage4 #titreArticleMobile4{
+	font-size:30px;
+	margin:auto;
+	font-family:Farnham-textBold;
+	color:#202020;
+	text-decoration:none;
+	display:none;
+
+
+}
+
+#articleBasPage5 #titreArticleMobile5{
+	font-size:30px;
+	margin:auto;
+	font-family:Farnham-textBold;
+	color:#202020;
+	text-decoration:none;
+	display:none;
+
+
+}
+
+
+
+
+
+/* 6ème article */ 
+
+#articleBasPage5{
+
+	width:49%;
+	display:inline-block;
+	vertical-align:top;
+
+}
+
+#articleBasPage5 #imgBasPage5{
+	display:block;
+
+	width:100%;
+	margin:auto;
+
+}
+#articleBasPage5 h2{
+	width:100%;
+
+	text-align:left;
+	margin:auto;
+	margin-top:5px;
+}
+#articleBasPage5 #titreArticle5{
+	font-size:30px;
+	margin:auto;
+	font-family:Farnham-textBold;
+	color:#202020;
+	text-decoration:none;
+
+}
+
+
+@media only screen and (max-width: 1040px)
+{
+	#articleBasPage4 #titreArticle4, #articleBasPage5 #titreArticle5
+	{
+	font-size:20px;
+	}
+
+	
+
+}
+
+
+@media only screen and (max-width: 680px)
+{
+	#articleBasPage4{
+	width:100%;
+	display:block;
+}
+
+#articleBasPage4 #imgBasPage4
+{
+	width:90%;
+}
+
+#articleBasPage4 #introduction
+{
+	text-align:center;
+}
+
+
+#articleBasPage4 #titreArticle4{
+display:none;
+}
+
+#articleBasPage4 #titreArticleMobile4{
+display:block;
+text-align:center;
+color:#C12020;
+font-size:25px;
+}
+
+
+#articleBasPage5 #imgBasPage5
+{
+	width:90%;
+}
+
+#articleBasPage5{
+
+	width:100%;
+
+}
+
+#articleBasPage5 #introduction
+{
+	text-align:center;
+}
+
+
+#articleBasPage5 #titreArticle5{
+display:none;
+}
+
+#articleBasPage5 #titreArticleMobile5{
+display:block;
+text-align:center;
+color:#C12020;
+font-size:25px;
+
+}
+
+}
+
+@media all and (max-device-width: 680px)
+{
+	#articleBasPage4{
+	width:100%;
+	display:block;
+}
+
+#articleBasPage4 #imgBasPage4
+{
+	width:90%;
+}
+
+#articleBasPage4 #introduction
+{
+	text-align:center;
+}
+
+
+#articleBasPage4 #titreArticle4{
+display:none;
+}
+
+#articleBasPage4 #titreArticleMobile4{
+display:block;
+text-align:center;
+color:#C12020;
+font-size:25px;
+
+}
+
+
+#articleBasPage5 #imgBasPage5
+{
+	width:90%;
+}
+
+#articleBasPage5{
+
+	width:100%;
+
+}
+
+#articleBasPage5 #introduction
+{
+	text-align:center;
+}
+
+
+#articleBasPage5 #titreArticle5{
+display:none;
+}
+
+#articleBasPage5 #titreArticleMobile5{
+display:block;
+text-align:center;
+color:#C12020;
+font-size:25px;
+
+}
+
+}
+

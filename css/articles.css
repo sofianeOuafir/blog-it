@@ -1,0 +1,112 @@
+body
+{
+width: 100%;
+}
+
+#container-index
+{
+	margin-top:70px;
+	background-color: white;
+	width: 95%;
+	border-right:1px #a9a9a9 solid;
+	border-left:1px #a9a9a9 solid;
+}
+
+
+.col-md-2
+{
+	border-radius: 5px;
+	background-color: #efefef;
+}
+
+
+#pagination
+{
+	text-align: center;
+}
+
+.pagination li a
+{
+	color:#a9a9a9 !important;
+	font-size: 25px;
+	/*background-color: #efefef !important;*/
+}
+
+.pagination .active a
+{
+background-color:#e14658 !important;
+	color:#caebf2 !important;
+	border-color: #e14658 !important;
+}
+
+.pagination li a:hover
+{
+	background-color:#e14658 !important;
+	color:#caebf2 !important;
+}
+
+#categories
+{
+font-size: 25px;
+color: #3c3c3c;
+display: inline-block;
+}
+
+.col-md-2 p a
+{
+color: #3c3c3c;
+font-size: 18px;
+}
+
+.col-md-2 p a:hover
+{
+color: #e14658;
+text-decoration: none;
+}
+
+.img-rounded
+{
+width: 100%;
+}
+/* Library -------------------------------------------------------------*/
+/* Title of every articles */
+.title
+{
+font-size: 25px;
+color: #3c3c3c;
+}
+
+.title:hover
+{
+color: #e14658;
+text-decoration: none;
+}
+/* end Title of every articles */
+
+
+/* author of the article */
+.author
+{
+	color:#a9a9a9;
+	font-size: 16px;
+}
+
+.author a
+{
+	color: #3c3c3c;
+}
+
+.author a:hover
+{
+	color:#e14658;
+	text-decoration: none;
+}
+
+/* end author of the article */
+
+.introduction
+{
+	color:#3c3c3c;
+	font-size: 18px;
+}
+/* end Library ------------------------------------------------------ */

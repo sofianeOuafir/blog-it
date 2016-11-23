@@ -1,0 +1,165 @@
+﻿@font-face
+{	
+	font-family:CloisterBlack;
+	src: url('../Police/CloisterBlack.ttf');
+}
+
+@font-face
+{	
+	font-family:Farnham;
+	src: url('../Police/Farnham.ttf');
+	
+}
+
+
+@font-face
+{	
+	font-family:FarnhamText-RegularItalLF;
+	src: url('../Police/FarnhamText-RegularItalLF.ttf');
+	
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'), url("../Police/9k-RPmcnxYEPm8CNFsH2gg.woff") format('woff');
+}
+
+body{
+	font-family:FarnhamText-RegularItalLF;
+}
+
+/* article */ 
+
+section{
+	width:100%;
+	margin:auto;
+}
+
+#partage{
+	position:fixed;
+}
+
+article{
+	width:80%;
+	margin:auto;
+	border-left:1px #DDDDDD solid;
+	border-right:1px #DDDDDD solid;
+	border-radius:3px;
+
+}
+#categorie
+{
+	font-family:FarnhamText-RegularItalLF;
+	color:#999999;
+	margin:auto;
+
+}
+
+#titreArticle{
+	
+	font-family:FarnhamText-RegularItalLF;
+	font-size:41px;
+	color:#202020;
+	margin:auto;
+	text-align:center;
+	margin-bottom:15px;
+
+}
+#dateArticle{
+	font-weight:bold;
+	margin:auto;
+}
+#dateArticle a{
+	font-weight:bold;
+	color:#C12020;
+}
+
+#vues{
+margin:auto;		
+}
+#imageArticle, .image{
+	display:block;
+	width:60%;
+	margin:auto;
+	margin-bottom:15px;
+}
+#introduction{
+	width:75%;
+	border-top:1px #DDDDDD solid;
+	border-bottom:1px #DDDDDD solid;
+	font-size:19px;
+	margin:auto;
+	margin-bottom:15px;
+	
+}
+#contenu{
+	width:75%;
+	border-top:1px #DDDDDD solid;
+	border-bottom:1px #DDDDDD solid;
+	font-size:19px;
+	margin:auto;
+	margin-bottom:15px;
+
+}
+
+#video iframe
+{	display:block;
+	width:75%;
+	height:70%;
+	margin:auto;
+
+}
+
+
+#commentaires
+{
+	width:100%;
+	margin:auto;
+}
+
+#unCommentaire
+{
+	border:thin #DDDDDD solid;
+	margin-bottom:5px;
+	width:70%;
+	margin:auto;
+
+}
+
+#faireUnCommentaire
+{
+text-decoration:none;
+background-color:#C12020;
+color:white;
+
+}
+
+#commentaires #auteurCommentaire{
+	margin:auto;
+	font-style:italic;
+	color:#C12020;
+
+}
+
+#messageCommentaire
+{
+	margin:auto;
+}
+
+#bulleCommentaire
+{
+	margin:auto;
+}
+
+#nbCommentaire{
+	margin:auto;
+	display:inline-block;
+	vertical-align:top;
+	font-weight:bold;
+}
+
+#iconCommentaire{
+	margin:auto;
+	display:inline-block;
+}
