@@ -35,8 +35,8 @@ include('header.php');
 					<h2 class="title"><?php echo $user->PSEUDONYME() ?></h2>
 				</div>
 				<div class="col-md-3">
-				<button type="button" class="btn default">Send a message</button>
-				<button type="button" class="btn default">See profile</button>
+				<button type="button" class="btn btn-primary">Send a message</button>
+				<button type="button" class="btn btn-primary">See profile</button>
 				</div>
 			</div>
 			<div class="col-md-12">

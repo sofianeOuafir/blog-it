@@ -12,10 +12,6 @@ width: 100%;
 	border-left:1px #a9a9a9 solid;
 }
 
-.col-md-10
-{
-
-}
 
 .col-md-2
 {

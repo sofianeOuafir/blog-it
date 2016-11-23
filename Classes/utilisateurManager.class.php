@@ -49,7 +49,6 @@ class utilisateurManager
             {
                 $utilisateurs[] = new utilisateur($donnees);
             }
-		
             if(isset($utilisateurs))
             {
                 return $utilisateurs;

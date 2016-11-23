@@ -43,13 +43,12 @@ class utilisateurManager
 	
 	public function getAll()
 	{
-		$req = $this->_db->query('SELECT * FROM UTILISATEUR');
+		$req = $this->_db->query('SELECT * FROM utilisateur');
         if($req->fetch(PDO::FETCH_ASSOC)){
             while($donnees = $req->fetch(PDO::FETCH_ASSOC))
             {
                 $utilisateurs[] = new utilisateur($donnees);
             }
-		
             if(isset($utilisateurs))
             {
                 return $utilisateurs;
