@@ -18,8 +18,8 @@ public function ControlAndSendEmail(contact $contact)
 //ajoute une demande de contact dans la base de données
 public function add(contact $contact)
 {
-	$query = $this->_db->prepare('INSERT INTO `contact`(`MESSAGE`, `ID_UTILISATEUR`, `DATE`) VALUES (?,?,?)');
-	$query->execute(array($contact->MESSAGE(),$contact->ID_UTILISATEUR(),$contact->DATE()));
+	$query = $this->_db->prepare('INSERT INTO `contact`(`MESSAGE`, `OBJET`, `DATE`) VALUES (?,?,?)');
+	$query->execute(array($contact->MESSAGE(),$contact->OBJET(),$contact->DATE()));
 }
 
 public function GetContact($idArticle)
