@@ -19,6 +19,13 @@ $users = $utilisateurManager->getList();
 <?php 
 include('header.php'); 
 ?>	
+<div id="alertSuccess" class="alert alert-success" role="alert" style="display:none">
+  <strong>Congratulations !</strong> Message sent with success !
+</div>
+
+<div id="alertError" class="alert alert-danger" role="alert" style="display:none">
+  <strong>Oh snap !</strong> this message has not been sent correctly, Try again !
+</div>
 
 <div class="container-fluid" id="users">
 	<?php 
@@ -35,8 +42,8 @@ include('header.php');
 					<h2 class="title"><?php echo $user->PSEUDONYME() ?></h2>
 				</div>
 				<div class="col-md-3">
-				<button type="button" class="btn default" data-toggle="modal" data-target="#exampleModal" data-whatever="@<?php echo $user->PSEUDONYME(); ?>" data-id="<?php echo $user->ID_UTILISATEUR(); ?>">Send a message</button>
-				<button type="button" class="btn default">See profile</button>
+				<button type="button" class="btn default myButton" data-toggle="modal" data-target="#exampleModal" data-whatever="@<?php echo $user->PSEUDONYME(); ?>" data-id="<?php echo $user->ID_UTILISATEUR(); ?>">Send a message</button>
+				<button type="button" class="btn default myButton">See profile</button>
 				</div>
 			</div>
 			<div class="col-md-12">
@@ -66,8 +73,8 @@ include('header.php');
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button id="buttonSend" type="button" class="btn btn-primary">Send message</button>
+        <button type="button" class="btn default myButton" data-dismiss="modal">Close</button>
+        <button id="buttonSend" type="button" class="btn default myButton" data-loading-text="Sending...">Send message</button>
       </div>
     </div>
   </div>
@@ -88,21 +95,33 @@ $('#exampleModal').on('show.bs.modal', function (event) {
 });
 
 $('#buttonSend').click(function () {
+	var $btn = $(this).button('loading');
   $.ajax({
          url: "traitementContact.php", 
          type: "post", //can be post or get
          data: {'MESSAGE': $('#message-text').val(), 'ID_UTILISATEUR': $('#recipient-name').val(), }, 
          success: function(){
+         	$('#alertSuccess').show();
          	$('#message-text').val("")
+         	$btn.button('reset')
 				$('#exampleModal').modal('hide');
+				$('#alertSuccess').css('margin-top','70px');
+				$('#users').css('margin-top','10px');
 				
+			
          },
          error:function () {
-         	alert("nooo");
+         	$('#alertError').show();
+         	$('#message-text').val("")
+         	$btn.button('reset')
+				$('#exampleModal').modal('hide');
+				$('#alertError').css('margin-top','70px');
+				$('#users').css('margin-top','10px');
          }
      });
 
 });
+
 
 $('.nav li:nth-child(3)').addClass('active');
 </script>

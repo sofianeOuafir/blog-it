@@ -1,7 +1,6 @@
 #users
 {
 	background-color: white;
-	border:1px black solid;
 	margin-top: 70px;
 }
 
@@ -56,20 +55,26 @@ height: 100%;
 	margin: 0 !important;
 }
 
-.btn
+.myButton
 {
 background-color: #efefef;
 color:#a9a9a9;
 font-size: 18px !important;
 }
 
-.btn:hover
+.myButton:hover
 {
 	background-color: #e14658;
 	color:#caebf2 !important;
 }
 
-.btn:focus
+.myButton:focus
 {
 color:#a9a9a9 !important;
+}
+
+#alertSuccess
+{
+	text-align: center;
+	font-size: 18px;
 }

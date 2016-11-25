@@ -48,86 +48,47 @@ $lastArticles = $articleManager->getTenLast();
 
 	<div class="container-fluid" id="container-index">
 		<div class="col-md-10">
+		<?php
+		$j = 0;
+		 while($j < 6)
+		 {
+		?>
 			<div class="col-md-12">
+				<?php
+				$k = $j;
+				while($k < $j + 2) {
+				?>
 				<div class="col-md-6">
 					<?php 
-					if(isset($articles[0])){
-					$lien = creationLien($articles[0]->TITRE(),1);
+					if(isset($articles[$k])){
+					$lien = creationLien($articles[$k]->TITRE(),1);
 				 	?>
-					<a class="title" href="<?php echo $lien ?>" ><?php echo  $articles[0]->TITRE()?></a>
-					<a href="<?php echo $lien; ?>"><img class="img-rounded" src="<?php echo $images[0]->SOURCE()?>" alt="<?php echo $images[0]->ALT()?>" /></a>
-					<p class="author">by <a href="<?php echo $authors[0]->PSEUDONYME().'.php'; ?>"><?php echo $authors[0]->PSEUDONYME() ?></a></p>	
-					<p class="introduction"><?php echo $articles[0]->INTRODUCTION() ?></p>				
-					<?php } ?>
+					<a class="title" href="<?php echo $lien ?>" ><?php echo  $articles[$k]->TITRE()?></a>
+					<a href="<?php echo $lien; ?>"><img class="img-rounded" src="<?php echo $images[$k]->SOURCE()?>" alt="<?php echo $images[$k]->ALT()?>" /></a>
+					<p class="author">by <a href="<?php echo $authors[$k]->PSEUDONYME().'.php'; ?>"><?php echo $authors[$k]->PSEUDONYME() ?></a></p>	
+					<a class="preambleLink" data-toggle="collapse" href="#collapseExample<?php echo $k ?>" aria-expanded="false" aria-controls="collapseExample">
+  						<span class="glyphicon glyphicon glyphicon-hand-down" aria-hidden="true"></span> See more
+					</a>
+					<div class="collapse" id="collapseExample<?php echo $k ?>">
+  						<div class="well">
+    						<p class="introduction"><?php echo $articles[$k]->INTRODUCTION() ?></p>	
+  						</div>
+					</div>
+					<?php } ?>			
 				</div>
-				<div class="col-md-6">
-					<?php 
-					if(isset($articles[1])){
-					$lien = creationLien($articles[1]->TITRE(),1);
-				 	?>
-					<a class="title" href="<?php echo $lien ?>" ><?php echo  $articles[1]->TITRE()?></a>	
-					<a href="<?php echo $lien; ?>"><img class="img-rounded" src="<?php echo $images[1]->SOURCE()?>" alt="<?php echo $images[1]->ALT()?>" /></a>
-					<p class="author">by <a href="<?php echo $authors[1]->PSEUDONYME().'.php'; ?>"><?php echo $authors[1]->PSEUDONYME() ?></a></p>	
-					<p class="introduction"><?php echo $articles[1]->INTRODUCTION() ?></p>				
-					<?php } ?>
-				</div>
+				<?php
+				$k = $k + 1;
+				}
+				
+				?>
 	
 			</div>
 			
-				
-			<div class="col-md-12">
-				<div class="col-md-6">
-					<?php 
-					if(isset($articles[2])){
-					$lien = creationLien($articles[2]->TITRE(),1);
-				 	?>
-					<a class="title" href="<?php echo $lien ?>" ><?php echo  $articles[2]->TITRE()?></a>	
-					<a href="<?php echo $lien; ?>"><img class="img-rounded" src="<?php echo $images[2]->SOURCE()?>" alt="<?php echo $images[2]->ALT()?>" /></a>
-					<p class="author">by <a href="<?php echo $authors[2]->PSEUDONYME().'.php'; ?>"><?php echo $authors[2]->PSEUDONYME() ?></a></p>	
-					
-					<p class="introduction"><?php echo $articles[2]->INTRODUCTION() ?></p>				
-					<?php } ?>
-				</div>
-				
-				<div class="col-md-6">
-					<?php 
-					if(isset($articles[3])){
-					$lien = creationLien($articles[3]->TITRE(),1);
-				 	?>
-					<a class="title" href="<?php echo $lien ?>"><?php echo  $articles[3]->TITRE()?></a>	
-					<a href="<?php echo $lien; ?>"><img class="img-rounded" src="<?php echo $images[3]->SOURCE()?>" alt="<?php echo $images[3]->ALT()?>" /></a>
-					<p class="author">by <a href="<?php echo $authors[3]->PSEUDONYME().'.php'; ?>"><?php echo $authors[3]->PSEUDONYME() ?></a></p>	
-					<p class="introduction"><?php echo $articles[3]->INTRODUCTION() ?></p>				
-					<?php } ?>
-				</div>
-			</div>
-			
-			<div class="col-md-12">
-				<div class="col-md-6">
-					<?php 
-					if(isset($articles[4])){
-					$lien = creationLien($articles[4]->TITRE(),1);
-				 	?>
-					<a class="title" href="<?php echo $lien ?>" ><?php echo  $articles[4]->TITRE()?></a>	
-					<a href="<?php echo $lien; ?>"><img class="img-rounded" src="<?php echo $images[4]->SOURCE()?>" alt="<?php echo $images[4]->ALT()?>" /></a>
-					<p class="author">by <a href="<?php echo $authors[4]->PSEUDONYME().'.php'; ?>"><?php echo $authors[4]->PSEUDONYME() ?></a></p>	
-					
-					<p class="introduction"><?php echo $articles[4]->INTRODUCTION() ?></p>				
-					<?php } ?>
-				</div>
-				
-				<div class="col-md-6">
-					<?php 
-					if(isset($articles[5])){
-					$lien = creationLien($articles[5]->TITRE(),1);
-				 	?>
-					<a class="title" href="<?php echo $lien ?>"><?php echo  $articles[5]->TITRE()?></a>	
-					<a href="<?php echo $lien; ?>"><img class="img-rounded" src="<?php echo $images[5]->SOURCE()?>" alt="<?php echo $images[5]->ALT()?>" /></a>
-					<p class="author">by <a href="<?php echo $authors[5]->PSEUDONYME().'.php'; ?>"><?php echo $authors[5]->PSEUDONYME() ?></a></p>	
-					<p class="introduction"><?php echo $articles[5]->INTRODUCTION()?></p>				
-					<?php } ?>
-				</div>
-			</div>
+		<?php
+		$j = $j + 2;
+		}
+		?>
+	
 		</div>
 		<div class="col-md-2">	
 		<p id="seeAlso">See also<!-- <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> --></p>
@@ -154,6 +115,16 @@ $lastArticles = $articleManager->getTenLast();
 
 <script> 
 	$('.nav li').first().addClass('active');
+	$( ".preambleLink" ).click(function() {
+		if ($(this).children("span").hasClass('glyphicon-hand-down')) {
+			$(this).text("");
+			$(this).append("<span class=\"glyphicon glyphicon glyphicon-hand-up\" aria-hidden=\"true\"></span> See less");
+		}
+		else {
+			$(this).text("");
+			$(this).append("<span class=\"glyphicon glyphicon glyphicon-hand-down\" aria-hidden=\"true\"></span> See more");
+		}		
+});
 </script>
 <script src="jquery.js"></script>
 

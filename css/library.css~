@@ -15,18 +15,21 @@ text-decoration: none;
 
 
 /* author of the article */
-.author
+.author, .preambleLink
 {
 	color:#a9a9a9;
 	font-size: 16px;
+	display: inline-block;
+	margin-right: 100px;
 }
 
-.author a
+.author a, .author a:focus, .preambleLink, .preambleLink:focus
 {
 	color: #3c3c3c;
+	text-decoration: none;
 }
 
-.author a:hover
+.author a:hover, .preambleLink:hover
 {
 	color:#e14658;
 	text-decoration: none;
