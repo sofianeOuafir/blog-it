@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script src="ckeditor_sdk/vendor/ckeditor/ckeditor.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /> 
+
+	<title>Edition - Sofiane's Chronicle</title>
+	<?php 
+	//include('header.php'); 
+	?>
+
+	<div class="container-fluid" id="container-index">
+		<form>
+		 	<textarea name="editor1" id="editor1" rows="10" cols="80">
+	          This is my textarea to be replaced with CKEditor.
+	      </textarea>
+	      <script>
+	          // Replace the <textarea id="editor1"> with a CKEditor
+	          // instance, using default configuration.
+	          CKEDITOR.replace( 'editor1' );
+	      </script>
+		</form>
+	</div>
+
+
+
+
+
+</body>
+
+</html>

@@ -43,7 +43,7 @@ $numberOfArticles = $articleManager->getNombreArticle();
 ?>
 	<link href="<?php echo $headerCss ?>" rel="stylesheet" type="text/css">
    <link href="<?php echo $lnBootstrapCss ?>" rel="stylesheet"/>
-	<link href="css/submenu.css" rel="stylesheet"/>
+	<link href="<?php echo $submenuCss ?>" rel="stylesheet"/>
 </head>
 <body>
 <header>
@@ -90,7 +90,7 @@ $numberOfArticles = $articleManager->getNombreArticle();
 	 		
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="<?php echo $lnBoostrapJs ?>"></script>		
-	<script src=""></script>
+	<script src="ckeditor/ckedito.js"></script>
 </header>
 	
 

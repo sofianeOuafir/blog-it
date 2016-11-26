@@ -67,7 +67,7 @@ $lastArticles = $articleManager->getTenLast();
 					<a href="<?php echo $lien; ?>"><img class="img-rounded" src="<?php echo $images[$k]->SOURCE()?>" alt="<?php echo $images[$k]->ALT()?>" /></a>
 					<p class="author">by <a href="<?php echo $authors[$k]->PSEUDONYME().'.php'; ?>"><?php echo $authors[$k]->PSEUDONYME() ?></a></p>	
 					<a class="preambleLink" data-toggle="collapse" href="#collapseExample<?php echo $k ?>" aria-expanded="false" aria-controls="collapseExample">
-  						<span class="glyphicon glyphicon glyphicon-hand-down" aria-hidden="true"></span> See more
+  						<span class="glyphicon glyphicon glyphicon-hand-down" aria-hidden="true"></span> Show more
 					</a>
 					<div class="collapse" id="collapseExample<?php echo $k ?>">
   						<div class="well">
@@ -118,11 +118,11 @@ $lastArticles = $articleManager->getTenLast();
 	$( ".preambleLink" ).click(function() {
 		if ($(this).children("span").hasClass('glyphicon-hand-down')) {
 			$(this).text("");
-			$(this).append("<span class=\"glyphicon glyphicon glyphicon-hand-up\" aria-hidden=\"true\"></span> See less");
+			$(this).append("<span class=\"glyphicon glyphicon glyphicon-hand-up\" aria-hidden=\"true\"></span> Show less");
 		}
 		else {
 			$(this).text("");
-			$(this).append("<span class=\"glyphicon glyphicon glyphicon-hand-down\" aria-hidden=\"true\"></span> See more");
+			$(this).append("<span class=\"glyphicon glyphicon glyphicon-hand-down\" aria-hidden=\"true\"></span> Show more");
 		}		
 });
 </script>
