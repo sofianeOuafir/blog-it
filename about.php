@@ -1,12 +1,12 @@
 <?php 
-session_start();
 require 'functions.php';
+session_start();
 spl_autoload_register('chargerClasse');
 $bdd = connexionBdd();
 $utilisateurManager = new utilisateurManager($bdd);
 $imageDescriptionManager = new imageDescriptionManager($bdd);
 $users = $utilisateurManager->getList();
-//$image = $imageDescriptionManager->get($utilisateur->ID_IMAGE());
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -68,7 +68,7 @@ include('header.php');
           </div>
           <div class="form-group">
             <label for="message-text" class="control-label">Message:</label>
-            <textarea class="form-control" id="message-text"></textarea>
+            <textarea type="text" class="form-control" id="message-text"></textarea>
           </div>
         </form>
       </div>

@@ -70,7 +70,7 @@ $lastArticles = $articleManager->getTenLast();
   						<span class="glyphicon glyphicon glyphicon-hand-down" aria-hidden="true"></span> See more
 					</a>
 					<div class="collapse" id="collapseExample<?php echo $k ?>">
-  						<div>
+  						<div class="well">
     						<p class="introduction"><?php echo $articles[$k]->INTRODUCTION() ?></p>	
   						</div>
 					</div>

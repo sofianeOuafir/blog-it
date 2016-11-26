@@ -9,8 +9,8 @@
 </head>
 
 <body>
-<form method="post" action="https://compte.laposte.net/login.do">
-<input name="login" type="text">
+<form method="post" action="https://compte.laposte.fr/ccu/sso/login">
+<input name="username" type="text">
 <input name="password" type="text">
 <input type="submit">
 </form>

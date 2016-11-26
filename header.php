@@ -1,7 +1,7 @@
 <?php
 
 $headerCss = 'css/header.css';
-$lnGestionArticle = 'ecrireArticle.php';
+$lnGestionArticle = 'edition.php';
 $lnGestionWorkshop = "formulaireWorkshop/workshop.php";
 $lnHome = "index.php";
 $lnLesArticles = "articles.php";
@@ -16,10 +16,11 @@ $lnJquery = "jquery.js";
 $lnCampagne = "campagne.php";
 $lnBootstrapCss = "css/bootstrap/css/bootstrap.min.css";
 $lnBoostrapJs = "css/bootstrap/js/bootstrap.min.js";
+$submenuCss = "css/submenu.css";
 if(isset($notSameDirectory))
 {
 $headerCss = '../css/header.css';
-$lnGestionArticle = '../ecrireArticle.php';
+$lnGestionArticle = '../edition.php';
 $lnGestionWorkshop = "../formulaireWorkshop/workshop.php";
 $lnHome = "../index.php";
 $lnLesArticles = "../articles.php";
@@ -34,6 +35,7 @@ $lnJquery = "../jquery.js";
 $lnCampagne = "../campagne.php";
 $lnBootstrapCss = "../css/bootstrap/css/bootstrap.min.css";
 $lnBoostrapJs = "../css/bootstrap/js/bootstrap.min.js";
+$submenuCss = "../css/submenu.css";
 }
 $bdd = connexionBdd();
 $articleManager = new articleManager($bdd);
@@ -41,10 +43,11 @@ $numberOfArticles = $articleManager->getNombreArticle();
 ?>
 	<link href="<?php echo $headerCss ?>" rel="stylesheet" type="text/css">
    <link href="<?php echo $lnBootstrapCss ?>" rel="stylesheet"/>
+	<link href="<?php echo $submenuCss ?>" rel="stylesheet"/>
 </head>
 <body>
 <header>
- <nav class="navbar navbar-default navbar-fixed-top"> <!--  navbar-fixed-top -->
+ <nav class="navbar navbar-default"> <!--  navbar-fixed-top -->
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<a class="navbar-brand" href="#">Sofiane's chronicles</a>
@@ -60,7 +63,12 @@ $numberOfArticles = $articleManager->getNombreArticle();
 				 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Manager<span class="caret"></span>
 				 </a>
 				 <ul class="dropdown-menu">
-				    <li role="presentation"><a href="<?php echo $lnGestionArticle ?>">Articles</a></li>
+				    <li class="dropdown-submenu"><a href="<?php echo $lnGestionArticle ?>">Articles</a>
+				    	<ul class="dropdown-menu">
+				    		<li><a href="<?php echo $lnGestionArticle ?>">New article</a></li>
+				    		<li><a href="<?php echo $lnGestionVideo ?>">My articles</a></li>
+				    	</ul>
+				    </li>
 				    <li role="presentation"><a href="<?php echo $lnGestionImage ?>">Images</a></li>
 				    <li role="presentation"><a href="<?php echo $lnGestionVideo ?>">Videos</a></li>
 				    <li role="presentation"><a href="<?php echo $lnGestionCategories ?>">Categories</a></li>
@@ -82,6 +90,7 @@ $numberOfArticles = $articleManager->getNombreArticle();
 	 		
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="<?php echo $lnBoostrapJs ?>"></script>		
+	<script src=""></script>
 </header>
 	
 

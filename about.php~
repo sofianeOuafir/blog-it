@@ -20,11 +20,11 @@ $users = $utilisateurManager->getList();
 include('header.php'); 
 ?>	
 <div id="alertSuccess" class="alert alert-success" role="alert" style="display:none">
-  <strong>Congratulations !</strong> Message sent with success !
+  <strong>Congratulations !</strong> the message has been sent with success !
 </div>
 
 <div id="alertError" class="alert alert-danger" role="alert" style="display:none">
-  <strong>Oh snap !</strong> this message has not been sent correctly, Try again !
+  <strong>Oh snap !</strong> the message has not been sent correctly, Try again !
 </div>
 
 <div class="container-fluid" id="users">
@@ -68,7 +68,7 @@ include('header.php');
           </div>
           <div class="form-group">
             <label for="message-text" class="control-label">Message:</label>
-            <textarea class="form-control" id="message-text"></textarea>
+            <textarea type="text" class="form-control" id="message-text"></textarea>
           </div>
         </form>
       </div>
