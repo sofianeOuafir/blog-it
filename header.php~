@@ -44,13 +44,14 @@ $numberOfArticles = $articleManager->getNombreArticle();
 	<link href="<?php echo $headerCss ?>" rel="stylesheet" type="text/css">
    <link href="<?php echo $lnBootstrapCss ?>" rel="stylesheet"/>
 	<link href="<?php echo $submenuCss ?>" rel="stylesheet"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">
 </head>
 <body>
 <header>
  <nav class="navbar navbar-default"> <!--  navbar-fixed-top -->
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#">Sofiane's chronicles</a>
+			<a class="navbar-brand" href="#">OMyBlog</a>
 		</div>
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav" >
@@ -87,10 +88,14 @@ $numberOfArticles = $articleManager->getNombreArticle();
 		</div>
 	 </div>
  </nav>	
-	 		
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+	<script src="jquery.js"></script>
 	<script src="<?php echo $lnBoostrapJs ?>"></script>		
-	<script src="ckeditor/ckedito.js"></script>
+	<script src="ckeditor/ckeditor.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
+	<script type="text/javascript" src="css/bootstrap-filestyle-1.2.1/src/bootstrap-filestyle.min.js"> </script>
+
 </header>
 	
 

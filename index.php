@@ -8,10 +8,7 @@ $bdd = connexionBdd();
 
 //instanciation des gestionnaire de classe
 $articleManager = new articleManager($bdd);
-$videoManager = new videoManager($bdd);
 $utilisateurManager = new utilisateurManager($bdd);
-$categorieManager = new categorieManager($bdd);
-$imageManager = new imageManager($bdd);
 $imageDescriptionManager = new imageDescriptionManager($bdd);
 
 //I get articles to publish (6)

@@ -300,7 +300,6 @@ class articleManager
 										INSERT INTO article set ID_ARTICLE = ?,
 										ID_UTILISATEUR = ?, 
 										ID_CATEGORIE = ?, 
-										ID_VIDEO = ?, 
 										ID_IMAGE_1 = ?,
 										TITRE = ?,
 										INTRODUCTION = ?,
@@ -313,7 +312,6 @@ class articleManager
 		$query->execute(array($article->ID_ARTICLE(),
 						$article->ID_UTILISATEUR(),
 						$article->ID_CATEGORIE(),
-						$article->ID_VIDEO(),
 						$article->ID_IMAGE_1(),
 						$article->TITRE(),
 						$article->INTRODUCTION(),
@@ -335,7 +333,6 @@ class articleManager
 										UPDATE `article` 
 										SET 
 										`ID_CATEGORIE`= ?,
-										`ID_VIDEO`= ?,
 										`ID_IMAGE_1`= ?,
 										`INTRODUCTION`= ?,
 										`CONTENU`= ?,
@@ -347,7 +344,6 @@ class articleManager
 									
 		$query->execute(array(
 						$article->ID_CATEGORIE(),
-						$article->ID_VIDEO(),
 						$article->ID_IMAGE_1(),
 						$article->INTRODUCTION(),
 						$article->CONTENU(),

@@ -8,10 +8,8 @@ $bdd = connexionBdd();
 
 //instanciation des gestionnaire de classe
 $articleManager = new articleManager($bdd);
-$videoManager = new videoManager($bdd);
 $utilisateurManager = new utilisateurManager($bdd);
 $categorieManager = new categorieManager($bdd);
-$imageManager = new imageManager($bdd);
 $imageDescriptionManager = new imageDescriptionManager($bdd);
 
 //I get articles to publish (6)
@@ -40,7 +38,6 @@ $lastArticles = $articleManager->getTenLast();
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /> 
 	<link href="css/index.css" rel="stylesheet" type="text/css">
 	<link href="css/library.css" rel="stylesheet" type="text/css">
-	<!--<link href="css/CSSIMPORTANT/index2.css" rel="stylesheet" type="text/css">-->
 	<title>Home - Sofiane's Chronicle</title>
 	<?php 
 	include('header.php'); 
