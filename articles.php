@@ -108,7 +108,7 @@ else
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /> 
 <link href="css/articles.css" rel="stylesheet" type="text/css">
 <link href="css/library.css" rel="stylesheet" type="text/css">
-<title>Articles - Sofiane Chronicles</title>
+<title>Articles - Golbit</title>
 <?php 
 include('header.php');
 ?>
@@ -253,33 +253,7 @@ include('header.php');
 	</div>	
 </div>
 
-	<!--
-<p id="lienPage">	
-	<?php
-		
-		$numeroPage = 0;
-
-		//affichage des liens vers les pages.
-		while($numeroPage < $nombrePage)
-		{
-			if(isset($_GET['idCategorie']))
-			{
-				$lien = 'articles.php?idCategorie='.$_GET['idCategorie'].'&page='.$numeroPage;
-			}
-			else
-			{
-				$lien = 'articles.php?page='.$numeroPage;
-			}
-			
-			
-	?>
-			<a href="<?php echo $lien ?>"> <?php echo $numeroPage ?></a>
-	<?php 
-			$numeroPage +=1;
-		}
-	?>	
-	
-</p>
+<!--
 		
 <div id="lesPlusVues">
 <?php if(isset($_GET['idCategorie'])){

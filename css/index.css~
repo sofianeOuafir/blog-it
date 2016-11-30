@@ -24,10 +24,6 @@ margin: auto;
 }
 
 
-.col-md-12
-{
-}
-
 #seeAlso
 {
 font-size: 25px;
@@ -47,7 +43,4 @@ color: #e14658;
 text-decoration: none;
 }
 
-.img-rounded
-{
-width: 100%;
-}
+

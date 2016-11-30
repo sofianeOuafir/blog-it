@@ -1,0 +1,39 @@
+#container-index
+{
+	margin-top:70px;
+	margin-bottom: :70px;
+	background-color: white;
+	width: 95%;
+	border-right:1px #a9a9a9 solid;
+	border-left:1px #a9a9a9 solid;	
+}
+
+#image
+{
+padding: 0px !important;
+margin-bottom: 10px;
+}
+
+#titre
+{
+margin-top: 10px;
+margin-bottom: 10px;
+width: 60%;
+}
+
+#category
+{
+margin-bottom: 10px;
+
+}
+
+#submit-container input
+{
+	display: block;
+	margin: auto;
+}
+
+#question-publish
+{
+	margin-top: 10px;
+}

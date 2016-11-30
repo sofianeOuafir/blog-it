@@ -2,7 +2,7 @@
 /* Title of every articles */
 .title
 {
-font-size: 25px;
+font-size: 20px;
 color: #3c3c3c;
 }
 
@@ -35,11 +35,35 @@ text-decoration: none;
 	text-decoration: none;
 }
 
+.img-rounded
+{
+width: 100%;
+
+}
+
 /* end author of the article */
 
 .introduction
 {
 	color:#3c3c3c;
 	font-size: 18px;
+}
+
+.myButton
+{
+background-color: #efefef;
+color:#a9a9a9;
+font-size: 18px !important;
+}
+
+.myButton:hover
+{
+	background-color: #e14658;
+	color:#caebf2 !important;
+}
+
+.myButton:focus
+{
+color:#a9a9a9 !important;
 }
 /* end Library ------------------------------------------------------ */

@@ -15,7 +15,7 @@ $users = $utilisateurManager->getList();
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /> 
 <link href="css/about.css" rel="stylesheet" type="text/css">
 <link href="css/library.css" rel="stylesheet" type="text/css">
-<title>About - Sofiane's Chronicle</title>
+<title>About - Golbit</title>
 <?php 
 include('header.php'); 
 ?>	

@@ -1,12 +1,12 @@
 <?php 
-session_start();
 require 'functions.php';
+session_start();
 spl_autoload_register('chargerClasse');
 $bdd = connexionBdd();
 $utilisateurManager = new utilisateurManager($bdd);
 $imageDescriptionManager = new imageDescriptionManager($bdd);
 $users = $utilisateurManager->getList();
-//$image = $imageDescriptionManager->get($utilisateur->ID_IMAGE());
+
 ?>
 <!DOCTYPE html>
 <html>

@@ -305,9 +305,10 @@ class articleManager
 										INTRODUCTION = ?,
 										CONTENU = ?,
 										DATE_REALISATION = ?,
-										Publier = ?'
+										PUBLIER = ?'
 										
 									);
+		
 									
 		$query->execute(array($article->ID_ARTICLE(),
 						$article->ID_UTILISATEUR(),
@@ -338,7 +339,7 @@ class articleManager
 										`CONTENU`= ?,
 										`TITRE`= ?,
 										`LAST_UPDATE`= ?,
-										`Publier`= ?
+										`PUBLIER`= ?
 										WHERE ID_ARTICLE = ?									
 									');
 									

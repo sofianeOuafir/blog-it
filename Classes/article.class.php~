@@ -10,7 +10,6 @@ class article
 	private $_TITRE;
 	private $_INTRODUCTION;
 	private $_CONTENU;
-	private $_RESUME;
 	private $_DATE_REALISATION;
 	private $_LAST_UPDATE;
 	private $_PUBLIER;
@@ -50,11 +49,6 @@ class article
 	public function CONTENU()
 	{
 		return $this->_CONTENU;
-	}
-	
-	public function RESUME()
-	{
-		return $this->_RESUME;
 	}
 	
 	public function DATE_REALISATION()
@@ -115,11 +109,6 @@ class article
 		$this->_CONTENU = $contenu;
 	}
 	
-	public function setRESUME($resume)
-	{
-		$this->_RESUME = $resume;
-	}
-	
 	public function setDATE_REALISATION($dateRealisation)
 	{
 		$this->_DATE_REALISATION = $dateRealisation;
@@ -130,7 +119,7 @@ class article
 		$this->_LAST_UPDATE = $lastUpdate;
 	}
 	
-	public function setPublier($publier)
+	public function setPUBLIER($publier)
 	{
 		$this->_PUBLIER = $publier;
 	}

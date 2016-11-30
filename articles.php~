@@ -108,7 +108,7 @@ else
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /> 
 <link href="css/articles.css" rel="stylesheet" type="text/css">
 <link href="css/library.css" rel="stylesheet" type="text/css">
-<title>Articles - Sofiane Chronicles</title>
+<title>Articles - Golbit</title>
 <?php 
 include('header.php');
 ?>
@@ -134,7 +134,7 @@ include('header.php');
 				<a href="<?php echo $lien; ?>"><img class="img-rounded" src="<?php echo $images[$k]->SOURCE()?>" alt="<?php echo $images[$k]->ALT()?>" /></a>
 				<p class="author">by <a href="<?php echo $authors[$k]->PSEUDONYME().'.php'; ?>"><?php echo $authors[$k]->PSEUDONYME() ?></a></p>	
 				<a class="preambleLink" data-toggle="collapse" href="#collapseExample<?php echo $k ?>" aria-expanded="false" aria-controls="collapseExample">
-  						<span class="glyphicon glyphicon glyphicon-hand-down" aria-hidden="true"></span> See more
+  						<span class="glyphicon glyphicon glyphicon-hand-down" aria-hidden="true"></span> Show more
 				</a>
 				<div class="collapse" id="collapseExample<?php echo $k ?>">
   						<div class="well">
@@ -253,33 +253,7 @@ include('header.php');
 	</div>	
 </div>
 
-	<!--
-<p id="lienPage">	
-	<?php
-		
-		$numeroPage = 0;
-
-		//affichage des liens vers les pages.
-		while($numeroPage < $nombrePage)
-		{
-			if(isset($_GET['idCategorie']))
-			{
-				$lien = 'articles.php?idCategorie='.$_GET['idCategorie'].'&page='.$numeroPage;
-			}
-			else
-			{
-				$lien = 'articles.php?page='.$numeroPage;
-			}
-			
-			
-	?>
-			<a href="<?php echo $lien ?>"> <?php echo $numeroPage ?></a>
-	<?php 
-			$numeroPage +=1;
-		}
-	?>	
-	
-</p>
+<!--
 		
 <div id="lesPlusVues">
 <?php if(isset($_GET['idCategorie'])){
@@ -332,11 +306,11 @@ else
 	$( ".preambleLink" ).click(function() {
 		if ($(this).children("span").hasClass('glyphicon-hand-down')) {
 			$(this).text("");
-			$(this).append("<span class=\"glyphicon glyphicon glyphicon-hand-up\" aria-hidden=\"true\"></span> See less");
+			$(this).append("<span class=\"glyphicon glyphicon glyphicon-hand-up\" aria-hidden=\"true\"></span> Show less");
 		}
 		else {
 			$(this).text("");
-			$(this).append("<span class=\"glyphicon glyphicon glyphicon-hand-down\" aria-hidden=\"true\"></span> See more");
+			$(this).append("<span class=\"glyphicon glyphicon glyphicon-hand-down\" aria-hidden=\"true\"></span> Show more");
 		}		
 });
 </script>
