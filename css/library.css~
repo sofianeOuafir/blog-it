@@ -38,7 +38,6 @@ text-decoration: none;
 .img-rounded
 {
 width: 100%;
-
 }
 
 /* end author of the article */
