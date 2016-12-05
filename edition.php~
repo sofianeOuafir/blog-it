@@ -26,14 +26,16 @@ $categories = $categorieManager->getList();
 	?>
 
 	<div class="container-fluid" id="container-index" >
-
+		<div class="row">
+			<div class="alert alert-success col-lg-offset-3 col-lg-6 col-lg-offset-3" role="alert" id="alert-success"><strong>Well done!</strong> Your article have successfully been saved!</div>
+		</div>
 		<form method="post" action="controller/edition.controller.php" enctype="multipart/form-data">
 			<div class="col-xs-5" id="image">
 				<input type="file" id="myImage" name="image" class="filestyle" data-buttonBefore="true" data-placeholder="This image will be the front cover of your article, please choose well" data-iconName="glyphicon glyphicon-picture" data-buttonText="Find an image" data-buttonName="btn-primary" >
 			</div>
 			
-			<div class="alert alert-danger col-xs-5" role="alert" id="alert-image">
-				<strong>	Oh snap! </strong> You got an error. Upload an image and try again! 					
+			<div class="alert alert-danger col-xs-5" role="alert" id="alert-image">	
+				<strong> Oh snap! </strong> You got an error. Upload an image and try again!				
 			</div>
 			<div id="titre">
 				<input maxlength="100" type="text" class="form-control" placeholder="Title (max 100 characters)" name="TITRE" id="title">
@@ -49,11 +51,10 @@ $categories = $categorieManager->getList();
 			</select>
 			</div>
 
-			<textarea maxlength="100" name="CONTENU" id="CONTENU">
+			<textarea name="CONTENU" id="CONTENU">
 	      </textarea>
 	      
 	      <div class="alert alert-danger" role="alert" id="alert-contenu">
-				<strong>	Oh snap! </strong> You got an error. write at least 20 words (200 characters) and try again!
 			</div>
 
 	      <p id="question-publish">Do you wish to publish this article now ? (if not, this article will be saved and you will be able to publish it later)</p>
@@ -85,11 +86,13 @@ $categories = $categorieManager->getList();
 		//before submission, I do checking on input controls
        $('form').submit(function() {
        	var isConsistent = true;
-       	
+       	$('#alert-success').hide();
 			//checking if no image is uploaded
        	if ($('.filestyle').get(0).files.length === 0) 
        	{
-    			$('#alert-image').show();
+				$('#alert-image').text("");
+	     		$('#alert-image').append("<strong> Oh snap! </strong> You got an error. Upload an image and try again!");
+	     		$('#alert-image').show();
     			isConsistent = false;
 		 	}
 		 	else {
@@ -107,18 +110,28 @@ $categories = $categorieManager->getList();
 		 	
 		 	//check that the user wrote at list 200 words
 		 	if (getClearText(CKEDITOR.instances.CONTENU.getData()).length -1 < 200) {
+		 		$('#alert-contenu').text("");
+		 		$('#alert-contenu').append('<strong> Oh snap! </strong> You got an error. write at least 20 words (200 characters) and try again!');
+		 		$('#alert-contenu').show();
+		 		isConsistent = false;
+		 	}
+		 	else if(getClearText(CKEDITOR.instances.CONTENU.getData()).length -1 > 10000) {
+		 		$('#alert-contenu').text("");
+		 		$('#alert-contenu').append('<strong> Oh snap! </strong> You got an error. Your article is too long (10 000 characters max). please, reduce it and try again!');
 		 		$('#alert-contenu').show();
 		 		isConsistent = false;
 		 	}
 		 	else {
 		 		$('#alert-contenu').hide();
 		 	}
+
 		 	
    	 	if (isConsistent) {
 				var data = new FormData($('form')[0]);
 				jQuery.each(jQuery('#myImage')[0].files, function(i, file) {
 				    data.append('image', file);
 				    data.append('INTRODUCTION',getClearText(CKEDITOR.instances.CONTENU.getData()))
+				    data.append('CONTENU',CKEDITOR.instances.CONTENU.getData())
 				});
 				
 				jQuery.ajax({
@@ -129,7 +142,37 @@ $categories = $categorieManager->getList();
 				    processData: false,
 				    type: 'POST',
 				    success: function(data){
-				        alert(data);
+				        if(data == 5)
+				        {
+				        		$('#alert-success').show();
+				        		$("#title").val("");
+				        		CKEDITOR.instances.CONTENU.setData("");
+				        		$(":file").filestyle('clear');
+				        }
+				        else {
+				        		$('#alert-success').hide();
+				        }
+				        
+				        if(data == 0 || data == 1) {
+				        		$('#alert-image').text("");
+				        		$('#alert-image').append("<strong>	Oh snap! </strong> You got an error. the upload has failed, please try again!");
+				        		$('#alert-image').show();
+				        }
+				        else if(data == 2)
+				        {
+				        		$('#alert-image').text("");
+				        		$('#alert-image').append("<strong> Oh snap! </strong> You got an error. JPEG, PNG or GIF format accepted!");
+				        		$('#alert-image').show();
+				        }
+				        else if(data == 3)
+				        {
+				        		$('#alert-image').text("");
+				        		$('#alert-image').append("<strong> Oh snap! </strong> You got an error. Upload an image and try again!");
+				        		$('#alert-image').show();
+				        }
+				        else {
+				        		$('#alert-image').hide();
+				        }
 				    }
 				});
 
@@ -145,6 +188,7 @@ $categories = $categorieManager->getList();
 		$('#alert-image').hide();
 		$('#alert-contenu').hide();
 		$('#alert-titre').hide();
+		$('#alert-success').hide();
 
 		//this function allow to have editor plain text
 		function getClearText(strSrc) {
@@ -156,7 +200,6 @@ $categories = $categorieManager->getList();
 
    </script>
    
-   <script src="js/library.js"></script>
 	      
 </body>
 
