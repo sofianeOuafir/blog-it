@@ -1,0 +1,19 @@
+#container-index
+{
+	margin-top:70px;
+	background-color: white;
+	border-right:1px #a9a9a9 solid;
+	border-left:1px #a9a9a9 solid;
+}
+
+#submit button
+{
+	display: block;
+	margin: auto;
+}
+
+#alert-loginFailed
+{
+	text-align: center;
+	font-size: 18px;
+}

@@ -2,7 +2,7 @@
 require('functions.php');
 session_start();
 spl_autoload_register('chargerClasse');
-
+if(connecter()) {
 //connection a la bdd
 $bdd = connexionBdd();
 
@@ -144,6 +144,7 @@ $categories = $categorieManager->getList();
 				    success: function(data){
 				        if(data == 5)
 				        {
+
 				        		$('#alert-success').show();
 				        		$("#title").val("");
 				        		CKEDITOR.instances.CONTENU.setData("");
@@ -195,12 +196,18 @@ $categories = $categorieManager->getList();
 			return  strSrc.replace( /<[^<|>]+?>/gi,'' );
 		}
 
-
- 	
-
    </script>
    
 	      
 </body>
 
 </html>
+<?php
+}
+else
+{
+?>
+<script>window.location.replace("connexion.php");</script>
+<?php
+}
+?>

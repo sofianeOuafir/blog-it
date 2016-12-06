@@ -32,20 +32,21 @@ function chargerClasse($classe)
 spl_autoload_register('chargerClasse');
 
 // cette fonction vérifie que les identifiant tapés sont correctes.
-function verificationIdentifiant()
+function checkCredential()
 {
 	//connection a la bdd
 	$bdd = connexionBdd();
-
 	//commentaire : requête sur la table Utilisateur pour savoir si l'identifiant et le mot de passe sont correct
-	
 	$req = $bdd->prepare('SELECT * FROM utilisateur WHERE PSEUDONYME = ? and PASSWORD = ?'); 
 	$req->execute(array($_POST['PSEUDONYME'],$_POST['PASSWORD']));
 	$donneesUtilisateur = $req->fetch(PDO::FETCH_ASSOC);
-
-
-	return $donneesUtilisateur;
-	
+	// si la connexion est un succès, alors on crée une variable de session.
+	if($donneesUtilisateur)
+	{
+		//$reussite est un tableau de données contenant les données de l'utilisateur, c'est pourquoi on l'instancie avec cet variable.
+		$_SESSION['UTILISATEUR'] = new utilisateur($donneesUtilisateur);
+		return $donneesUtilisateur;
+	}
 
 }
 
@@ -54,22 +55,6 @@ function verificationIdentifiant()
 // cette fonction redirige l'utilisateur vers le site si la connexion est un succès et renvoi vers une page d'erreur sinon
 function redirection($donneesUtilisateur)
 {
-
-	
-	// si la connexion est un succès, alors on crée une variable de session.
-	if($donneesUtilisateur)
-	{
-		//$reussite est un tableau de données contenant les données de l'utilisateur, c'est pourquoi on l'instancie avec cet variable.
-		$_SESSION['UTILISATEUR'] = new utilisateur($donneesUtilisateur);
-		redirectionVers('../index.php');
-
-	}
-	else
-	{
-		header('location:../connexion.php?erreurAuthentification=1');
-	
-	}
-
 
 }
 

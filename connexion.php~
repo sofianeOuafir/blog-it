@@ -14,7 +14,7 @@ if(!connecter())
 
 <?php include('header.php'); ?>
 <div class="container-fluid" id="container-index">
-	<div class="alert alert-danger col-md-offset-4 col-md-4 col-md-offset-4" role="alert" id="alert-loginFailed">Login failed . Please try again</div>
+	<div class="alert alert-danger col-md-offset-4 col-md-4 col-md-offset-4" role="alert" id="alert-loginFailed">Login failed . please login to our system again</div>
 	<div class="row">
 		<div class="col-md-offset-4 col-md-4 col-md-offset-4">
 			<form method="post" action="controller/connexion.controller.php">

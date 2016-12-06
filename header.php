@@ -17,6 +17,7 @@ $lnCampagne = "campagne.php";
 $lnBootstrapCss = "css/bootstrap/css/bootstrap.min.css";
 $lnBoostrapJs = "css/bootstrap/js/bootstrap.min.js";
 $submenuCss = "css/submenu.css";
+$lnConnexion = "connexion.php";
 if(isset($notSameDirectory))
 {
 $headerCss = '../css/header.css';
@@ -36,6 +37,7 @@ $lnCampagne = "../campagne.php";
 $lnBootstrapCss = "../css/bootstrap/css/bootstrap.min.css";
 $lnBoostrapJs = "../css/bootstrap/js/bootstrap.min.js";
 $submenuCss = "../css/submenu.css";
+$lnConnexion = "../connexion.php";
 }
 $bdd = connexionBdd();
 $articleManager = new articleManager($bdd);
@@ -79,17 +81,19 @@ $numberOfArticles = $articleManager->getNombreArticle();
 				    <li role="presentation"><a href="<?php echo $lnGestionWorkshop ?>">Events</a></li>
 				 </ul>
 				 </li>
-				 <li role="presentation"><a href="controleurs/controleurDeconnexion.php"><span class="glyphicon glyphicon-off" aria-hidden="true"> </span> Log off</a></li>
+				 <li role="presentation"><a href="controller/deconnexion.controller.php"><span class="glyphicon glyphicon-off" aria-hidden="true"> </span> Log off</a></li>
 				 <?php }?>
 			 </ul>
 			 <?php if(connecter()){ ?>
 			 <p class="navbar-text navbar-right"><span class="glyphicon glyphicon-user" aria-hidden="true"> </span> Signed in as <a href="<?php echo $lnUtilisateurPage ?>" class="navbar-link"><?php echo $_SESSION['UTILISATEUR']->PSEUDONYME(); ?></a></p>
-			 <?php }?>
+			 <?php }else{ ?>
+			 <p class="navbar-text navbar-right"><span class="glyphicon glyphicon-user" aria-hidden="true"> </span><a href="<?php echo $lnConnexion ?>" class="navbar-link"> Log in</a></p>
+			 <?php } ?>
 		</div>
 	 </div>
  </nav>	
-	
-	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+
+
 	<script src="jquery.js"></script>
 	<script src="<?php echo $lnBoostrapJs ?>"></script>		
 	<script src="ckeditor/ckeditor.js"></script>
