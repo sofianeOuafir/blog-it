@@ -3,23 +3,35 @@ require('functions.php');
 session_start();
 spl_autoload_register('chargerClasse');
 if(connecter()) {
-//connection a la bdd
-$bdd = connexionBdd();
+	//connection a la bdd
+	$bdd = connexionBdd();
+	
+	//instanciation des gestionnaire de classe
+	
+	$utilisateurManager = new utilisateurManager($bdd);
+	$categorieManager = new categorieManager($bdd);
+	$rights = $utilisateurManager->getRights($_SESSION['UTILISATEUR']->ID_TYPE());
+	if($rights != 0)
+	{
+		// if the current user is at least an author
+		if(!in_array(1,$rights))
+		{
+		?>
+		<script>window.location.replace("index.php");</script>
+		<?php
 
-//instanciation des gestionnaire de classe
-$articleManager = new articleManager($bdd);
-$utilisateurManager = new utilisateurManager($bdd);
-$categorieManager = new categorieManager($bdd);
-$imageDescriptionManager = new imageDescriptionManager($bdd);
-$categories = $categorieManager->getList();
+		}
+		
+	$categories = $categorieManager->getList();
+
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /> 
-	<link href="css/library.css" rel="stylesheet" type="text/css">
 	<link href="css/edition.css" rel="stylesheet" type="text/css">
+	<link href="css/library.css" rel="stylesheet" type="text/css">
 	<title>Edition - Golbit</title>
 	<?php 
 	include('header.php'); 
@@ -203,6 +215,13 @@ $categories = $categorieManager->getList();
 
 </html>
 <?php
+	}
+	else {
+?>
+	<script>window.location.replace("index.php");</script>
+<?php
+		
+	}
 }
 else
 {

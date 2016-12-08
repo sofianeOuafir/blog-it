@@ -1,0 +1,21 @@
+thead th, tbody td
+{
+	text-align: center;
+	border:1px black solid;
+}
+
+#title
+{
+	display: inline-block;
+	width: 100%;
+	font-size: 20px;
+	text-decoration: none;
+	color: #3c3c3c;
+	height: 40px;
+	padding-top: 7px;
+}
+
+#title
+{
+	text-decoration: none;
+}

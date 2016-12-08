@@ -1,7 +1,7 @@
-#users
+#container-index
 {
-	background-color: white;
-	margin-top: 70px;
+	border-right:1px white solid;
+	border-left:1px white solid;
 }
 
 .col-md-12

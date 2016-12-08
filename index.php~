@@ -37,7 +37,7 @@ $lastArticles = $articleManager->getTenLast();
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /> 
 	<link href="css/index.css" rel="stylesheet" type="text/css">
 	<link href="css/library.css" rel="stylesheet" type="text/css">
-	<title>Home - Sofiane's Chronicle</title>
+	<title>Home - Golbit</title>
 	<?php 
 	include('header.php'); 
 	?>

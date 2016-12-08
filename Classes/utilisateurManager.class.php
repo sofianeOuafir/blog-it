@@ -57,8 +57,22 @@ class utilisateurManager
 		
 		return 0;
 	}
-
 	
+	public function getRights($idType)
+	{
+		$req = $this->_db->prepare('SELECT ID_RIGHT FROM authorizations WHERE ID_TYPE = ?');
+		$req->execute(array($idType));
+		while($donnees = $req->fetch(PDO::FETCH_ASSOC))
+		{
+			$rights[] = $donnees['ID_RIGHT'];
+		}
+		
+		if(isset($rights)) {
+			return $rights;
+		}
+		
+		return 0;
+	}
 	
 	public function setDB($db)
 	{
@@ -69,6 +83,8 @@ class utilisateurManager
 	{
 		$this->setDB($db);
 	}
+	
+	
 }
 
 ?>

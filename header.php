@@ -18,6 +18,7 @@ $lnBootstrapCss = "css/bootstrap/css/bootstrap.min.css";
 $lnBoostrapJs = "css/bootstrap/js/bootstrap.min.js";
 $submenuCss = "css/submenu.css";
 $lnConnexion = "connexion.php";
+$lnMyArticles = "myArticles.php";
 if(isset($notSameDirectory))
 {
 $headerCss = '../css/header.css';
@@ -38,8 +39,29 @@ $lnBootstrapCss = "../css/bootstrap/css/bootstrap.min.css";
 $lnBoostrapJs = "../css/bootstrap/js/bootstrap.min.js";
 $submenuCss = "../css/submenu.css";
 $lnConnexion = "../connexion.php";
+$lnMyArticles = "../myArticles.php";
 }
 $bdd = connexionBdd();
+if(connecter())
+{
+	$utilisateurManager = new utilisateurManager($bdd);
+	$rights = $utilisateurManager->getRights($_SESSION['UTILISATEUR']->ID_TYPE());
+	//if the user has rights
+	if($rights != 0)
+	{
+		// if the current user is at least an author
+		if(in_array(1,$rights))
+		{
+			$isManagerEnabled = true;
+		}
+		else {
+			$isManagerEnabled = false;
+		}
+	}
+	else {
+		$isManagerEnabled = false;	
+	}
+}
 $articleManager = new articleManager($bdd);
 $numberOfArticles = $articleManager->getNombreArticle();
 ?>
@@ -60,7 +82,10 @@ $numberOfArticles = $articleManager->getNombreArticle();
 				 <li role="presentation"><a href="<?php echo $lnHome ?>"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
 				 <li role="presentation"><a href="<?php echo $lnLesArticles ?>"><span class="glyphicon glyphicon-text-background" aria-hidden="true"></span> Articles <span class="badge"> <?php echo $numberOfArticles ?></span></a></li>
 				 <li role="presentation"><a href="<?php echo $lnSofiane ?>"><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> About us</a></li>
-				 <?php if(connecter()){ ?>
+				 <?php 
+				 if(connecter()){ 
+					if($isManagerEnabled) {				 
+				 ?>
 				 <li role="presentation" class="dropdown">
 				 <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
 				 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Manager<span class="caret"></span>
@@ -69,7 +94,7 @@ $numberOfArticles = $articleManager->getNombreArticle();
 				    <li class="dropdown-submenu"><a href="<?php echo $lnGestionArticle ?>">Articles</a>
 				    	<ul class="dropdown-menu">
 				    		<li><a href="<?php echo $lnGestionArticle ?>">New article</a></li>
-				    		<li><a href="<?php echo $lnGestionVideo ?>">My articles</a></li>
+				    		<li><a href="<?php echo $lnMyArticles ?>">My articles</a></li>
 				    	</ul>
 				    </li>
 				    <li role="presentation"><a href="<?php echo $lnGestionImage ?>">Images</a></li>
@@ -81,6 +106,7 @@ $numberOfArticles = $articleManager->getNombreArticle();
 				    <li role="presentation"><a href="<?php echo $lnGestionWorkshop ?>">Events</a></li>
 				 </ul>
 				 </li>
+				 <?php } ?>
 				 <li role="presentation"><a href="controller/deconnexion.controller.php"><span class="glyphicon glyphicon-off" aria-hidden="true"> </span> Log off</a></li>
 				 <?php }?>
 			 </ul>

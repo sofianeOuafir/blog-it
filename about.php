@@ -13,8 +13,9 @@ $users = $utilisateurManager->getList();
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /> 
-<link href="css/about.css" rel="stylesheet" type="text/css">
 <link href="css/library.css" rel="stylesheet" type="text/css">
+<link href="css/about.css" rel="stylesheet" type="text/css">
+
 <title>About - Golbit</title>
 <?php 
 include('header.php'); 
@@ -27,7 +28,7 @@ include('header.php');
   <strong>Oh snap !</strong> the message has not been sent correctly, Try again !
 </div>
 
-<div class="container-fluid" id="users">
+<div class="container-fluid" id="container-index">
 	<?php 
 	foreach($users as $user){ 
 	$image = $imageDescriptionManager->get($user->ID_IMAGE());

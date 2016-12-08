@@ -11,7 +11,7 @@ class utilisateur
 	private $_PAYS;
 	private $_CONTENU;
 	private $_INTRODUCTION;
-	private $_ID_VIDEO;
+	private $_ID_TYPE;
 	
 	//getters
 	public function ID_UTILISATEUR()
@@ -34,9 +34,9 @@ class utilisateur
 		return $this->_INTRODUCTION;
 	}
 	
-	public function ID_VIDEO()
+	public function ID_TYPE()
 	{
-		return $this->_ID_VIDEO;
+		return $this->_ID_TYPE;
 	}
 
 	public function PSEUDONYME()
@@ -92,9 +92,9 @@ class utilisateur
 		$this->_INTRODUCTION = $value;
 	}
 	
-	public function setID_VIDEO($value)
+	public function setID_TYPE($value)
 	{
-		$this->_ID_VIDEO = $value;
+		$this->_ID_TYPE = $value;
 	}
 
 	

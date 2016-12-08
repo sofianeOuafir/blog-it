@@ -86,13 +86,37 @@ class articleManager
 		return $article;
 	}
 	
+	public function setPublish(article $article)
+	{
+		$query = $this->_db->prepare('UPDATE `article` SET `PUBLIER`= ? WHERE ID_ARTICLE = ?');			
+		$query->execute(array($article->PUBLIER(),$article->ID_ARTICLE()));
+	}
+	
+	//recupère all articles of a user
+	public function getArticlesOf($idUtilisateur)
+	{
+		$req = $this->_db->prepare('SELECT * FROM article WHERE ID_UTILISATEUR = ? order by DATE_REALISATION DESC');
+		$req->execute(array($idUtilisateur));
+		while($donnees = $req->fetch(PDO::FETCH_ASSOC))
+		{
+			$articles[] = new article($donnees);
+		}
+		
+		if(isset($articles))
+		{
+			return $articles;
+		}
+		
+		return 0;
+	}
+	
 
 	
 	// recupere une liste d'articles
 	
 	public function getList()
 	{
-		$req = $this->_db->query('SELECT * from article');
+		$req = $this->_db->query('SELECT * from article order by DATE_REALISATION DESC');
 		while($donnees = $req->fetch(PDO::FETCH_ASSOC))
 		{
 			$articles[] = new article($donnees);

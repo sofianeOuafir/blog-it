@@ -122,7 +122,7 @@ $lastArticles = $articleManager->getTenLast();
 		}		
 });
 </script>
-<script src="jquery.js"></script>
+
 
 
 </body>
