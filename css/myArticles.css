@@ -18,3 +18,8 @@ thead th, tbody td
 {
 	text-decoration: none;
 }
+
+#alert-success
+{
+	text-align: center;
+}

@@ -39,13 +39,25 @@ if(connecter()) {
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /> 
-	<link href="css/library.css" rel="stylesheet" type="text/css">
 	<link href="css/myArticles.css" rel="stylesheet" type="text/css">
+	<link href="css/library.css" rel="stylesheet" type="text/css">
 	<title>My articles - Golbit</title>
 	<?php 
 	include('header.php'); 
 	?>
 	<div class="container-fluid" id="container-index" >
+		<?php if(isset($_GET['updated'])) 
+		{
+		?>
+		<div id="alert-success" class="alert alert-success alert-dismissible fade in col-lg-offset-3 col-lg-6 col-lg-offset-3" role="alert">
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		  <strong>Congratulations!</strong> Your article has successfully been updated!
+		</div>
+		<?php	
+		}
+		if($articles != 0) 
+		{
+		?>
 		<table class="table table-bordered table-hover">
 		  <thead>
 		    <tr>
@@ -56,13 +68,11 @@ if(connecter()) {
 		  </thead>
 		  <tbody>
 		  	<?php 
-			if(isset($articles)) 
-			{
 				foreach($articles as $article)
 				{	  
 		  	?>
 		    <tr class="<?php if($article->PUBLIER() == 1){echo 'success';}else{echo 'warning';}?>">
-		      <td><a href="#" id="title"><?php echo $article->TITRE(); ?></a></td>
+		      <td><a href="edition.php?idArticle=<?php echo $article->ID_ARTICLE(); ?>" id="title"><?php echo $article->TITRE(); ?></a></td>
 		      <td>
 		      	<button type="button" data-loading-text="Requesting" class="btn <?php if($article->PUBLIER() == 1){echo 'btn-success';}else{echo 'btn-warning';}?> btn-lg publish" name="PUBLIER" value="<?php if($article->PUBLIER() == 1){echo 0;}else{echo 1;}?>">
   						<span class="glyphicon glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span> <?php if($article->PUBLIER() == 1){echo "Unpublish";}else{echo "Publish";}?>
@@ -77,10 +87,21 @@ if(connecter()) {
 		    </tr>
 	    	<?php
 	    		}
-	 		}
-	 		?>
+	    	?>
+
 		  </tbody>
 		</table>
+		<?php
+	 		}
+	 		else {
+	 	?>
+	 	<div id="alert-info" class="alert alert-info" role="alert">
+  			Welcome! You have no articles to manage yet, <a href="edition.php" class="alert-link">get started now!</a>
+		</div>
+	 	
+	 	<?php
+	 	}
+	 	?>
 	</div>
 
    

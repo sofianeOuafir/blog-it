@@ -128,17 +128,16 @@ include('header.php');
 			<div class="col-md-6">
 				<?php 
 				if(isset($articles[$k])){
-				$lien = creationLien($articles[$k]->TITRE(),1);
 			 	?>
-				<a class="title" href="<?php echo $lien ?>" ><?php echo  $articles[$k]->TITRE()?></a>
-				<a href="<?php echo $lien; ?>"><img class="img-rounded" src="<?php echo $images[$k]->SOURCE()?>" alt="<?php echo $images[$k]->ALT()?>" /></a>
+				<a class="title" href="#"><?php echo  htmlspecialchars($articles[$k]->TITRE())?></a>
+				<a href="#"><img class="img-rounded" src="<?php echo $images[$k]->SOURCE()?>" alt="<?php echo $images[$k]->ALT()?>" /></a>
 				<p class="author">by <a href="<?php echo $authors[$k]->PSEUDONYME().'.php'; ?>"><?php echo $authors[$k]->PSEUDONYME() ?></a></p>	
 				<a class="preambleLink" data-toggle="collapse" href="#collapseExample<?php echo $k ?>" aria-expanded="false" aria-controls="collapseExample">
   						<span class="glyphicon glyphicon glyphicon-hand-down" aria-hidden="true"></span> Show more
 				</a>
 				<div class="collapse" id="collapseExample<?php echo $k ?>">
   						<div class="well">
- 						<p class="introduction"><?php echo $articles[$k]->INTRODUCTION() ?></p>	
+ 						<p class="introduction"><?php echo htmlspecialchars($articles[$k]->INTRODUCTION()); ?></p>	
   						</div>
 				</div>
 				<?php } ?>			

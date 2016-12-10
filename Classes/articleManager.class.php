@@ -78,12 +78,13 @@ class articleManager
 		{
 			$article = new article($donnees);
 		}
-		else
-		{
-			$article = $this->getLast();
-		}
 		
-		return $article;
+		if(isset($article))
+		{
+			return $article;
+		}
+
+		return 0;
 	}
 	
 	public function setPublish(article $article)
@@ -370,6 +371,34 @@ class articleManager
 		$query->execute(array(
 						$article->ID_CATEGORIE(),
 						$article->ID_IMAGE_1(),
+						$article->INTRODUCTION(),
+						$article->CONTENU(),
+						$article->TITRE(),
+						$article->LAST_UPDATE(),
+						$article->PUBLIER(),
+						$article->ID_ARTICLE())		
+									
+										
+		 );
+		 
+	}
+	
+	public function updateWithoutIMage(article $article)
+	{
+		$query = $this->_db->prepare('
+										UPDATE `article` 
+										SET 
+										`ID_CATEGORIE`= ?,
+										`INTRODUCTION`= ?,
+										`CONTENU`= ?,
+										`TITRE`= ?,
+										`LAST_UPDATE`= ?,
+										`PUBLIER`= ?
+										WHERE ID_ARTICLE = ?									
+									');
+									
+		$query->execute(array(
+						$article->ID_CATEGORIE(),
 						$article->INTRODUCTION(),
 						$article->CONTENU(),
 						$article->TITRE(),

@@ -9,6 +9,11 @@ width: 100%;
 	background-color: #efefef;
 }
 
+.col-md-6, .col-md-2
+{
+	word-wrap: break-word;
+}
+
 
 #pagination
 {

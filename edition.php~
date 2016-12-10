@@ -9,6 +9,8 @@ if(connecter()) {
 	//instanciation des gestionnaire de classe
 	
 	$utilisateurManager = new utilisateurManager($bdd);
+	$categorieManager = new categorieManager($bdd);
+	$rights = $utilisateurManager->getRights($_SESSION['UTILISATEUR']->ID_TYPE());
 	if($rights != 0)
 	{
 		// if the current user is at least an author
@@ -17,11 +19,40 @@ if(connecter()) {
 		?>
 		<script>window.location.replace("index.php");</script>
 		<?php
-
 		}
-		
-	$categories = $categorieManager->getList();
-
+	
+		$isUpdateMode = false;
+		$categories = $categorieManager->getList();
+		if(isset($_GET['idArticle']))
+		{
+			$articleManager = new articleManager($bdd);
+			$article = $articleManager->get($_GET['idArticle']);
+			if($article)
+			{
+				if(!in_array(2,$rights))
+				{
+					if($article->ID_UTILISATEUR() == $_SESSION['UTILISATEUR']->ID_UTILISATEUR()) 
+					{
+						$isUpdateMode = true;
+						if($article->PUBLIER() == 1) {
+							$isPublished = true;
+						}
+						else {
+							$isPublished = false;
+						}
+					}
+				}
+				else {
+					$isUpdateMode = true;
+					if($article->PUBLIER() == 1) {
+						$isPublished = true;
+					}
+					else {
+						$isPublished = false;
+					}
+				}
+			}
+		}
 ?>
 <!DOCTYPE html>
 <html>
@@ -48,7 +79,7 @@ if(connecter()) {
 				<strong> Oh snap! </strong> You got an error. Upload an image and try again!				
 			</div>
 			<div id="titre">
-				<input maxlength="100" type="text" class="form-control" placeholder="Title (max 100 characters)" name="TITRE" id="title">
+				<input maxlength="100" type="text" class="form-control" placeholder="Title (max 100 characters)" name="TITRE" id="title" value="<?php if($isUpdateMode){ echo htmlspecialchars($article->TITRE()); } ?>">
 			</div>
 			<div class="alert alert-danger" role="alert" id="alert-titre">
 				<strong>	Oh snap! </strong> You got an error. write at least 10 characters and try again! 					
@@ -56,23 +87,34 @@ if(connecter()) {
 			<div id="category">
 			<select id="selectpicker" class="selectpicker" data-live-search="true" data-header="Select a category" name="ID_CATEGORIE">			  
 			  <?php foreach($categories as $categorie){ ?>
-			    <option value="<?php echo $categorie->ID_CATEGORIE(); ?>"><?php echo $categorie->NOM_CATEGORIE(); ?></option>
+			    <option value="<?php echo $categorie->ID_CATEGORIE(); ?>" <?php if($isUpdateMode){ if($isPublished){if($article->ID_CATEGORIE() == $categorie->ID_CATEGORIE()){echo 'selected';}}} ?> ><?php echo $categorie->NOM_CATEGORIE(); ?></option>
 			  <?php } ?>
 			</select>
 			</div>
 
 			<textarea name="CONTENU" id="CONTENU">
+				
 	      </textarea>
-	      
+	      <p id="myContenu">
+	      	<?php if($isUpdateMode){ echo htmlspecialchars($article->CONTENU()); } ?>
+	      </p>
 	      <div class="alert alert-danger" role="alert" id="alert-contenu">
 			</div>
 
 	      <p id="question-publish">Do you wish to publish this article now ? (if not, this article will be saved and you will be able to publish it later)</p>
-	      <label for="publish">Yes, let's do it! </label><input type="checkbox" id="publish" name="PUBLIER">
+	      <label for="publish">Yes, let's do it! </label><input type="checkbox" id="publish" name="PUBLIER" <?php if($isUpdateMode){ if($isPublished){ echo 'checked'; } } ?>>
 
 	      <div id="submit-container">
-	      	<input class="btn btn-primary" type="submit" id="submit" value="Save & Publish">
+	      	<input class="btn btn-primary" type="submit" id="submit" value="<?php if($isUpdateMode){ if($isPublished){ echo 'Update & Publish'; }else{ echo 'Update';} }else{ echo 'Save';} ?>">
 	      </div>
+	      <?php
+	      if($isUpdateMode) {
+	      ?>
+	      <input id="updateMode" type="text" value="yes" name="updateMode">
+	      <input id="idArticle" name="ID_ARTICLE" value="<?php echo $_GET['idArticle']; ?>">  
+	      <?php
+	      }
+	      ?>
 		</form>
 		
 	</div>
@@ -86,10 +128,22 @@ if(connecter()) {
        $("#publish").click(function () {
 			if(document.getElementById('publish').checked)
 			{
-				$("#submit").val("Save & Publish");
+				if($('#updateMode').length)
+				{
+					$("#submit").val("Update & Publish");
+				}
+				else {
+					$("#submit").val("Save & Publish");
+				}
 			}
 			else {
-				$("#submit").val("Save");
+				if($('#updateMode').length)
+				{
+					$("#submit").val("Update");
+				}
+				else {
+					$("#submit").val("Save");
+				}
 			}
        })
        
@@ -98,7 +152,7 @@ if(connecter()) {
        	var isConsistent = true;
        	$('#alert-success').hide();
 			//checking if no image is uploaded
-       	if ($('.filestyle').get(0).files.length === 0) 
+       	if ($('.filestyle').get(0).files.length === 0 && !$('#updateMode').length) 
        	{
 				$('#alert-image').text("");
 	     		$('#alert-image').append("<strong> Oh snap! </strong> You got an error. Upload an image and try again!");
@@ -138,12 +192,13 @@ if(connecter()) {
 		 	
    	 	if (isConsistent) {
 				var data = new FormData($('form')[0]);
-				jQuery.each(jQuery('#myImage')[0].files, function(i, file) {
+				data.append('INTRODUCTION',getClearText(CKEDITOR.instances.CONTENU.getData()))
+				data.append('CONTENU',CKEDITOR.instances.CONTENU.getData())
+					 jQuery.each(jQuery('#myImage')[0].files, function(i, file) {
 				    data.append('image', file);
-				    data.append('INTRODUCTION',getClearText(CKEDITOR.instances.CONTENU.getData()))
-				    data.append('CONTENU',CKEDITOR.instances.CONTENU.getData())
 				});
 				
+
 				jQuery.ajax({
 				    url: 'controller/edition.controller.php',
 				    data: data,
@@ -154,31 +209,46 @@ if(connecter()) {
 				    success: function(data){
 				        if(data == 5)
 				        {
-
 				        		$('#alert-success').show();
 				        		$("#title").val("");
 				        		CKEDITOR.instances.CONTENU.setData("");
 				        		$(":file").filestyle('clear');
 				        }
+						  else if(data == 11)
+				        {
+								window.location.replace("myArticles.php?updated=1");
+				        }
 				        else {
 				        		$('#alert-success').hide();
 				        }
 				        
-				        if(data == 0 || data == 1) {
+				        if(data == 1 || data == 2) {
 				        		$('#alert-image').text("");
-				        		$('#alert-image').append("<strong>	Oh snap! </strong> You got an error. the upload has failed, please try again!");
+				        		$('#alert-image').append("<strong>	Oh snap! </strong> You got an error. the file is too big, choose another image and try again!");
 				        		$('#alert-image').show();
 				        }
-				        else if(data == 2)
+				        else if(data == 3 || data == 13)
 				        {
 				        		$('#alert-image').text("");
-				        		$('#alert-image').append("<strong> Oh snap! </strong> You got an error. JPEG, PNG or GIF format accepted!");
+				        		$('#alert-image').append("<strong> Oh snap! </strong> You got an error. The upload has failed, please try again!");
 				        		$('#alert-image').show();
 				        }
-				        else if(data == 3)
+				        else if(data == 4)
 				        {
 				        		$('#alert-image').text("");
 				        		$('#alert-image').append("<strong> Oh snap! </strong> You got an error. Upload an image and try again!");
+				        		$('#alert-image').show();
+				        }
+				        else if(data == 7)
+				        {
+				        		$('#alert-image').text("");
+				        		$('#alert-image').append("<strong> Oh snap! </strong> You got an error. Your image has not been saved correctly, please try again!");
+				        		$('#alert-image').show();
+				        }
+				        else if(data == 10)
+				        {
+				        		$('#alert-image').text("");
+				        		$('#alert-image').append("<strong> Oh snap! </strong> You got an error. JPEG, PNG or GIF format accepted!");
 				        		$('#alert-image').show();
 				        }
 				        else {
@@ -195,11 +265,18 @@ if(connecter()) {
    	 	}
 		});
 
-		document.getElementById('publish').checked = true;
 		$('#alert-image').hide();
 		$('#alert-contenu').hide();
 		$('#alert-titre').hide();
 		$('#alert-success').hide();
+		$('#myContenu').hide();
+		$('#updateMode').hide();
+		$('#idArticle').hide();
+		CKEDITOR.instances.CONTENU.setData($('#myContenu').text());
+		if($('#updateMode').length)
+		{
+			$('#myImage').attr('placeholder', "Upload an image only if you want to update your article's front cover");
+		}
 
 		//this function allow to have editor plain text
 		function getClearText(strSrc) {

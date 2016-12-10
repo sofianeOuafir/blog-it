@@ -74,4 +74,10 @@ font-size: 18px !important;
 {
 color:#a9a9a9 !important;
 }
+
+#alert-success, #alert-info
+{
+	text-align: center;
+	font-size: 18px;
+}
 /* end Library ------------------------------------------------------ */
