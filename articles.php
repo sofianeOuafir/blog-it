@@ -120,17 +120,17 @@ include('header.php');
 	 while($j < 6)
 	 {
 	?>
-		<div class="col-md-12">
+		<div class="col-md-12 articles">
 			<?php
 			$k = $j;
 			while($k < $j + 2) {
 			?>
-			<div class="col-md-6">
+			<div class="col-md-offset-2 col-md-8 col-md-offset-2 article">
 				<?php 
 				if(isset($articles[$k])){
 			 	?>
-				<a class="title" href="#"><?php echo  htmlspecialchars($articles[$k]->TITRE())?></a>
-				<a href="#"><img class="img-rounded" src="<?php echo $images[$k]->SOURCE()?>" alt="<?php echo $images[$k]->ALT()?>" /></a>
+				<a class="title" href="article.php?idArticle=<?php echo $articles[$k]->ID_ARTICLE(); ?>"><?php echo  htmlspecialchars($articles[$k]->TITRE())?></a>
+				<a href="article.php?idArticle=<?php echo $articles[$k]->ID_ARTICLE(); ?>"><img class="img-rounded" src="<?php echo $images[$k]->SOURCE()?>" alt="<?php echo $images[$k]->ALT()?>" /></a>
 				<p class="author">by <a href="<?php echo $authors[$k]->PSEUDONYME().'.php'; ?>"><?php echo $authors[$k]->PSEUDONYME() ?></a></p>	
 				<a class="preambleLink" data-toggle="collapse" href="#collapseExample<?php echo $k ?>" aria-expanded="false" aria-controls="collapseExample">
   						<span class="glyphicon glyphicon glyphicon-hand-down" aria-hidden="true"></span> Show more
@@ -156,18 +156,19 @@ include('header.php');
 	?>
 
 	</div>
-	<div class="col-md-2">	
-	<p id="categories">Categories<!-- <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> --></p>
-	<!-- NE MANQUEZ PAS -->
+	<div data-spy="affix">	
+	<h4 class="title_subnavigation">Categories</h4>
+	<ul class="nav nav-pills nav-stacked">
 		<?php if($categories){ ?>
 				<?php foreach($categories as $categorie)				
 				{
 				?>		
-				<p><a href="<?php echo 'articles.php?idCategorie='.$categorie->ID_CATEGORIE()?>"><?php echo $categorie->NOM_CATEGORIE()?> <span class="badge"> <?php echo $articleManager->getNombreArticleByCategorie($categorie->ID_CATEGORIE()); ?></span></a></p>			
+				<li role="presentation" class="<?php if(isset($_GET['idCategorie'])){if($_GET['idCategorie'] == $categorie->ID_CATEGORIE()){echo 'active';}} ?>"><a href="<?php echo 'articles.php?idCategorie='.$categorie->ID_CATEGORIE()?>"><?php echo $categorie->NOM_CATEGORIE()?> <span class="badge"> <?php echo $articleManager->getNombreArticleByCategorie($categorie->ID_CATEGORIE()); ?></span></a></li>			
 				<?php			
 				}	
 				?>
 		<?php }?>
+	</ul>
 	</div>
 	<div class="col-md-12" id="pagination">
 		<nav aria-label="Page navigation">
@@ -301,7 +302,7 @@ else
 -->
 
 <script> 
-	$('.nav li:nth-child(2)').addClass('active');
+	$('.main-nav li:nth-child(2)').addClass('active');
 	$( ".preambleLink" ).click(function() {
 		if ($(this).children("span").hasClass('glyphicon-hand-down')) {
 			$(this).text("");

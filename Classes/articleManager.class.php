@@ -210,7 +210,30 @@ class articleManager
 		
 	}
 
+	// parameters idCategorie, idArticle (pour ne pas recuperer l'article entrain d'être lu)
+	public function getTenLastFromCategory($idCategorie, $idArticle)
+	{
+		$req = $this->_db->prepare('SELECT * FROM `article` WHERE PUBLIER = 1 and ID_CATEGORIE = ? and ID_ARTICLE != ? order by date_realisation desc limit 0,10');
+		$req->execute(array($idCategorie, $idArticle));
+		$donnees = $req->fetch(PDO::FETCH_ASSOC);
 	
+		
+		if($donnees)
+		{
+			$articles[] = new article($donnees);
+			while($donnees = $req->fetch(PDO::FETCH_ASSOC))
+			{
+				$articles[] = new article($donnees);
+			}
+			
+			return $articles;
+		}
+		
+		$articles = 0;
+		
+		return $articles;
+		
+	}	
 	
 	// recupere le nombre d'article
 	public function getNombreArticle()

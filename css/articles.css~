@@ -3,11 +3,6 @@ body
 width: 100%;
 }
 
-.col-md-2
-{
-	border-radius: 5px;
-	background-color: #efefef;
-}
 
 
 #pagination
@@ -42,16 +37,17 @@ color: #3c3c3c;
 display: inline-block;
 }
 
-.col-md-2 p a
+.active a
 {
-color: #3c3c3c;
-font-size: 18px;
+	
+	background-color: #e14658 !important;
+	color:#caebf2 !important;
 }
 
-.col-md-2 p a:hover
-{
-color: #e14658;
-text-decoration: none;
+.nav li a{
+color: white;
 }
+
+
 
 

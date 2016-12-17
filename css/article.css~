@@ -1,0 +1,50 @@
+
+#image
+{
+	display: block;
+	width: 80%;
+}
+
+.sidebar-module-inset
+{
+font-size:15px;
+border:1px black solid;
+background-color: white;
+padding: 10px;
+margin-bottom: 10px;
+}
+
+.see-also
+{
+border:1px black solid;
+background-color: white;
+}
+
+.sidebar-module-inset h4, .sidebar-module h4
+{
+text-align: center;
+}
+
+.share
+{
+margin:auto;
+}
+
+.share li
+{
+	text-align: center;
+	margin-left: -20px !important;
+	width: 100%;
+list-style-type: none;
+}
+
+.blog-sidebar
+{
+	background-color: #efefef;
+	border-left:0.5px #a9a9a9 solid;
+}
+
+.blog-main
+{
+	border-right:0.5px #a9a9a9 solid; 
+}
