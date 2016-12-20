@@ -8,26 +8,30 @@
 .sidebar-module-inset
 {
 font-size:15px;
-border:1px black solid;
-background-color: white;
 padding: 10px;
-margin-bottom: 10px;
 }
 
-.see-also
+.see-also, .sidebar-module-inset
 {
-border:1px black solid;
-background-color: white;
+border:1px #a9a9a9 solid;
+margin-bottom: 10px;
+border-radius: 5px;
 }
 
-.sidebar-module-inset h4, .sidebar-module h4
+.sidebar-module-inset h4 a, .sidebar-module h4
 {
 text-align: center;
+}
+
+#introduction-author
+{
+	text-align: center;
 }
 
 .share
 {
 margin:auto;
+margin-bottom: 10px;
 }
 
 .share li
@@ -35,16 +39,18 @@ margin:auto;
 	text-align: center;
 	margin-left: -20px !important;
 	width: 100%;
-list-style-type: none;
+	list-style-type: none;
 }
 
-.blog-sidebar
+.blog-main, .social-media
 {
-	background-color: #efefef;
-	border-left:0.5px #a9a9a9 solid;
+	border:1px #a9a9a9 solid; 
+	border-radius: 5px;
 }
 
-.blog-main
+#imageAuthor
 {
-	border-right:0.5px #a9a9a9 solid; 
+	margin: auto;
+	display: block;
+	width: 50%;
 }

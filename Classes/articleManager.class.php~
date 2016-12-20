@@ -9,7 +9,7 @@ class articleManager
 	
 	public function articleLesPlusVues()
 	{
-		$req = $this->_db->query('select * from consulter inner join article on article.id_article = consulter.id_article WHERE publier = 1 group by consulter.id_article order by sum(vue) DESC LIMIT 0,5');
+		$req = $this->_db->query('select * from consulter inner join article on article.id_article = consulter.id_article WHERE publier = 1 and ID_ARTICLE not in (select ID_ARTICLE from deletedArticle) group by consulter.id_article order by sum(vue) DESC LIMIT 0,5');
         if($req->fetch(PDO::FETCH_ASSOC)){
             while($donnees = $req->fetch(PDO::FETCH_ASSOC))
             {
@@ -27,7 +27,7 @@ class articleManager
 	
 	public function articleLesPlusVuesParCategorie($idCategorie)
 	{
-		$req = $this->_db->prepare('select * from consulter inner join article on article.id_article = consulter.id_article WHERE article.id_categorie = ? and publier = 1 group by consulter.id_article order by sum(vue) DESC LIMIT 0,5');
+		$req = $this->_db->prepare('select * from consulter inner join article on article.id_article = consulter.id_article WHERE article.id_categorie = ? and publier = 1 and ID_ARTICLE not in (select ID_ARTICLE from deletedArticle) group by consulter.id_article order by sum(vue) DESC LIMIT 0,5');
 		$req->execute(array($idCategorie));
 		while($donnees = $req->fetch(PDO::FETCH_ASSOC))
 		{
@@ -47,7 +47,7 @@ class articleManager
 	
 	public function getLesArticlesAPublier()
 	{
-		$req = $this->_db->query('SELECT * FROM `article` WHERE publier = 1 order by date_realisation desc limit 0,6');
+		$req = $this->_db->query('SELECT * FROM `article` WHERE publier = 1 and ID_ARTICLE not in (select ID_ARTICLE from deletedArticle) order by date_realisation desc limit 0,6');
 		while($donnees = $req->fetch(PDO::FETCH_ASSOC))
 		{
 			$articles[] = new article($donnees);
@@ -96,7 +96,7 @@ class articleManager
 	//recupère all articles of a user
 	public function getArticlesOf($idUtilisateur)
 	{
-		$req = $this->_db->prepare('SELECT * FROM article WHERE ID_UTILISATEUR = ? order by DATE_REALISATION DESC');
+		$req = $this->_db->prepare('SELECT * FROM article WHERE ID_UTILISATEUR = ? and ID_ARTICLE not in (select ID_ARTICLE from deletedArticle) order by DATE_REALISATION DESC');
 		$req->execute(array($idUtilisateur));
 		while($donnees = $req->fetch(PDO::FETCH_ASSOC))
 		{
@@ -117,7 +117,7 @@ class articleManager
 	
 	public function getList()
 	{
-		$req = $this->_db->query('SELECT * from article order by DATE_REALISATION DESC');
+		$req = $this->_db->query('SELECT * from article where ID_ARTICLE not in (select ID_ARTICLE from deletedArticle) order by DATE_REALISATION DESC');
 		while($donnees = $req->fetch(PDO::FETCH_ASSOC))
 		{
 			$articles[] = new article($donnees);
@@ -135,7 +135,7 @@ class articleManager
 	
 	public function getListWithLimit($min,$max)
 	{
-		$req = $this->_db->prepare('SELECT * from article WHERE Publier = 1 order by DATE_REALISATION DESC LIMIT :min, :max');
+		$req = $this->_db->prepare('SELECT * from article WHERE Publier = 1 and ID_ARTICLE not in (select ID_ARTICLE from deletedArticle) order by DATE_REALISATION DESC LIMIT :min, :max');
 		$req->bindValue(':min',$min,PDO::PARAM_INT);
 		$req->bindValue(':max',$max,PDO::PARAM_INT);
 		$req->execute();
@@ -162,7 +162,7 @@ class articleManager
 	{
 		$articles = array();
 		//je declare une variable articles que j'initialise à null
-		$req = $this->_db->prepare('SELECT * from article WHERE ID_CATEGORIE = :idCategorie and Publier = 1 order by DATE_REALISATION DESC LIMIT :min, :max');
+		$req = $this->_db->prepare('SELECT * from article WHERE ID_CATEGORIE = :idCategorie and Publier = 1 and ID_ARTICLE not in (select ID_ARTICLE from deletedArticle) order by DATE_REALISATION DESC LIMIT :min, :max');
 		$req->bindValue(':min',$min,PDO::PARAM_INT);
 		$req->bindValue(':max',$max,PDO::PARAM_INT);
 		$req->bindValue(':idCategorie',$idCategorie,PDO::PARAM_INT);
@@ -189,7 +189,7 @@ class articleManager
 	
 	public function getTenLast()
 	{
-		$req = $this->_db->query('SELECT * FROM `article` WHERE publier = 1 order by date_realisation desc limit 6,10');
+		$req = $this->_db->query('SELECT * FROM `article` WHERE publier = 1 and ID_ARTICLE not in (select ID_ARTICLE from deletedArticle) order by date_realisation desc limit 6,10');
 		$donnees = $req->fetch(PDO::FETCH_ASSOC);
 	
 		
@@ -213,8 +213,8 @@ class articleManager
 	// parameters idCategorie, idArticle (pour ne pas recuperer l'article entrain d'être lu)
 	public function getTenLastFromCategory($idCategorie, $idArticle)
 	{
-		$req = $this->_db->prepare('SELECT * FROM `article` WHERE PUBLIER = 1 and ID_CATEGORIE = ? order by date_realisation desc limit 0,10');
-		$req->execute(array($idCategorie));
+		$req = $this->_db->prepare('SELECT * FROM `article` WHERE PUBLIER = 1 and ID_CATEGORIE = ? and ID_ARTICLE != ? and ID_ARTICLE not in (select ID_ARTICLE from deletedArticle) order by date_realisation desc limit 0,10');
+		$req->execute(array($idCategorie, $idArticle));
 		$donnees = $req->fetch(PDO::FETCH_ASSOC);
 	
 		
@@ -238,7 +238,7 @@ class articleManager
 	// recupere le nombre d'article
 	public function getNombreArticle()
 	{
-		$req = $this->_db->query('SELECT count(*) as nombreArticle FROM article WHERE publier = 1');
+		$req = $this->_db->query('SELECT count(*) as nombreArticle FROM article WHERE publier = 1 and ID_ARTICLE not in (select ID_ARTICLE from deletedArticle)');
 		$donnees = $req->fetch(PDO::FETCH_ASSOC);
 		return $donnees['nombreArticle'];
 
@@ -248,7 +248,7 @@ class articleManager
 	
 	public function getNombreArticleByCategorie($idcategorie)
 	{
-		$req = $this->_db->prepare('SELECT count(*) as nombreArticle FROM article WHERE ID_CATEGORIE = ? and Publier = 1');
+		$req = $this->_db->prepare('SELECT count(*) as nombreArticle FROM article WHERE ID_CATEGORIE = ? and Publier = 1 and ID_ARTICLE not in (select ID_ARTICLE from deletedArticle)');
 		$verification = $req->execute(array($idcategorie));
 		$donnees = $req->fetch(PDO::FETCH_ASSOC);
 		if($verification)
@@ -442,7 +442,6 @@ class articleManager
 		$nextId = $donnees['maxId'] + 1;
 		
 		return $nextId;
-	
 	}
 	
 	
@@ -462,10 +461,10 @@ class articleManager
 	}
 	
 	
-	public function delete($id)
+	public function delete(article $article)
 	{
-		$req = $this->_db->prepare('DELETE FROM article WHERE ID_ARTICLE = ?');
-		$req->execute(array($id));
+		$query = $this->_db->prepare('INSERT INTO deletedArticle set ID_ARTICLE = ?');						
+		$query->execute(array($article->ID_ARTICLE()));
 	}
 	
 	

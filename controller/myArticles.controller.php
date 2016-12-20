@@ -5,7 +5,14 @@ spl_autoload_register('chargerClasse');
 $bdd = connexionBdd();
 $articleManager = new articleManager($bdd);
 $article = new article($_POST);
+if(isset($_POST['PUBLIER']))
+{
 $articleManager->setPublish($article);
-echo $article->ID_ARTICLE();
-echo $article->PUBLIER();
+}
+
+if(isset($_POST['DELETE']))
+{
+	$articleManager->delete($article);
+}
+
 ?>

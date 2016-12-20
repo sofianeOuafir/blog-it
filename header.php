@@ -1,6 +1,6 @@
 <?php
 
-$headerCss = 'css/header.css';
+$headerCss = 'css/header-travelTheme.css';
 $lnGestionArticle = 'edition.php';
 $lnGestionWorkshop = "formulaireWorkshop/workshop.php";
 $lnHome = "index.php";
@@ -21,7 +21,7 @@ $lnConnexion = "connexion.php";
 $lnMyArticles = "myArticles.php";
 if(isset($notSameDirectory))
 {
-$headerCss = '../css/header.css';
+$headerCss = '../css/header-travelTheme.css';
 $lnGestionArticle = '../edition.php';
 $lnGestionWorkshop = "../formulaireWorkshop/workshop.php";
 $lnHome = "../index.php";

@@ -19,15 +19,15 @@ width: 100%;
 
 .pagination .active a
 {
-background-color:#e14658 !important;
-	color:#caebf2 !important;
-	border-color: #e14658 !important;
+background-color:#20948B !important;
+color:white; !important;
+border-color: #20948B !important;
 }
 
 .pagination li a:hover
 {
-	background-color:#e14658 !important;
-	color:#caebf2 !important;
+	background-color:#20948B !important;
+	color:white; !important;
 }
 
 #categories
@@ -37,16 +37,22 @@ color: #3c3c3c;
 display: inline-block;
 }
 
+
 .active a
 {
 	
-	background-color: #e14658 !important;
-	color:#caebf2 !important;
+	background-color: #6AB187 !important;
+	color: white; !important;
 }
 
-.nav li a{
-color: white;
+.active a span
+{
+background-color: #20948B !important;
+color: white !important;
 }
+
+
+
 
 
 

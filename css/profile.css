@@ -1,0 +1,11 @@
+.presentation
+{
+border:1px black solid;
+}
+
+.img-circle
+{
+	width: 60%;
+	display: block;
+	margin: auto;
+}

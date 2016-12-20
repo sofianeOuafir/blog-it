@@ -75,7 +75,7 @@ if(connecter()) {
 		    <tr class="<?php if($article->PUBLIER() == 1){echo 'success';}else{echo 'warning';}?>">
 		      <td><a href="edition.php?idArticle=<?php echo $article->ID_ARTICLE(); ?>" id="title"><?php echo $article->TITRE(); ?></a></td>
 		      <td>
-		      	<a href="article.php?idArticle=<?php echo $article->ID_ARTICLE(); ?>" class="btn btn-default">Preview</a>
+		      	<a href="article.php?idArticle=<?php echo $article->ID_ARTICLE(); ?>" class="btn btn-default"><span class=" glyphicon glyphicon-eye-open" aria-hidden="true"></span> Preview</a>
 		      </td>
 		      <td>
 		      	<button type="button" data-loading-text="Requesting" class="btn <?php if($article->PUBLIER() == 1){echo 'btn-success';}else{echo 'btn-warning';}?> publish" name="PUBLIER" value="<?php if($article->PUBLIER() == 1){echo 0;}else{echo 1;}?>">
@@ -84,10 +84,12 @@ if(connecter()) {
   					<p class="id_article"><?php echo $article->ID_ARTICLE(); ?></p>
 		      </td>
 		      <td>
-		      	<button type="button" class="btn btn-default">
+		      	<button type="button" class="btn btn-danger delete" data-toggle="modal" data-target=".delete-modal">
   						<span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span> Delete
 					</button> 
+					<p class="id_article"><?php echo $article->ID_ARTICLE(); ?></p>
 				</td>
+				
 		    </tr>
 	    	<?php
 	    		}
@@ -106,6 +108,32 @@ if(connecter()) {
 	 	<?php
 	 	}
 	 	?>
+	</div>
+	
+
+	<div class="modal fade bs-example-modal-sm delete-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+	  <div class="modal-dialog modal-sm" role="document">
+	    <div class="modal-content">
+	     	<div class="modal-header modal-header-confirm">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="confirm-delete-h4">Confirm the deletion</h4>
+      	</div>
+      	<div class="modal-body">
+	      	<div class="row">
+	          <div class="col-md-offset-2 col-md-8 col-md-offset-2" id="question-delete-h4">Delete this article ?</div>
+	         </div>
+      	</div>
+      	<div class="modal-footer">
+      		<div class="row">
+	          	<div class="col-md-offset-2 col-md-8 col-md-offset-2" id="button-delete-h4">
+    		        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+	        		  <button type="button" class="btn btn-danger delete-confirm">Delete</button>
+	          	</div>
+	         </div>
+
+      	</div>
+	    </div>
+	  </div>
 	</div>
 
    
@@ -147,8 +175,32 @@ if(connecter()) {
 			    }
 			});
 		});	
+		
+		$(".delete").click( function(){
+			$(".delete-confirm").val($(this).siblings('.id_article').text());
+		});
+		
+		$(".delete-confirm").click( function(){
+ 		var data = new FormData();
+			data.append('DELETE', 1);
+			data.append('ID_ARTICLE', $(this).val())
+			var button = $(this);
+			
+			jQuery.ajax({
+			    url: 'controller/myArticles.controller.php',
+			    data: data,
+			    cache: false,
+			    contentType: false,
+ 		    processData: false,
+			    type: 'POST',
+			    success: function(data){
+			    	window.location.replace("myArticles.php");
+			    }
+			});
+		});	
 		$('.id_article').hide();
 	</script>
+	
 </body>
 
 </html>

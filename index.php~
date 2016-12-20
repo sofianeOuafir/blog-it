@@ -43,63 +43,56 @@ $lastArticles = $articleManager->getTenLast();
 	?>
 
 	<div class="container-fluid" id="container-index">
-		<div class="col-md-10">
-		<?php
-		$j = 0;
-		 while($j < 6)
-		 {
-		?>
-			<div class="col-md-12 articles">
-				<?php
-				$k = $j;
-				while($k < $j + 2) {
-				?>
-				<div class="col-md-offset-2 col-md-8 col-md-offset-2 article">
+		<div class="row">
+			<div class="col-sm-3 subnavigation">
+				<div class="see-also">
+					<h4 class="title_subnavigation"><strong>See also</strong></h4>
+					<ul class="nav nav-pills nav-stacked">
+						<?php if($lastArticles){ ?>
+								<?php foreach($lastArticles as $article)
+								{
+								?>
+								<li role="presentation"><a href="article.php?idArticle=<?php echo $article->ID_ARTICLE(); ?>"><?php echo $article->TITRE()?></a></li>					
+								<?php				
+								}
+								?>
+						<?php 
+						}
+						?>
+					</ul>
+				</div>	
+			</div>
+			
+			<div class="col-sm-8 articles">
+			<?php
+			$k = 0;
+			 while($k < 6)
+			 {
+			?>
+	
+				<div class="col-sm-8 article">
 					<?php 
 					if(isset($articles[$k])){
 				 	?>
 					<a class="title" href="article.php?idArticle=<?php echo $articles[$k]->ID_ARTICLE(); ?>" ><?php echo  htmlspecialchars($articles[$k]->TITRE());?></a>
 					<a href="article.php?idArticle=<?php echo $articles[$k]->ID_ARTICLE(); ?>"><img class="img-rounded" src="<?php echo $images[$k]->SOURCE()?>" alt="<?php echo $images[$k]->ALT()?>" /></a>
-					<p class="author">by <a href="<?php echo $authors[$k]->PSEUDONYME().'.php'; ?>"><?php echo $authors[$k]->PSEUDONYME() ?></a></p>	
 					<a class="preambleLink" data-toggle="collapse" href="#collapseExample<?php echo $k ?>" aria-expanded="false" aria-controls="collapseExample">
-  						<span class="glyphicon glyphicon glyphicon-hand-down" aria-hidden="true"></span> Show more
+	  						<span class="glyphicon glyphicon glyphicon-hand-down" aria-hidden="true"></span> Show more
 					</a>
 					<div class="collapse" id="collapseExample<?php echo $k ?>">
-  						<div class="well">
-    						<p class="introduction"><?php echo htmlspecialchars($articles[$k]->INTRODUCTION()); ?></p>	
-  						</div>
+	  						<div class="well">
+	 						<p class="introduction"><?php echo htmlspecialchars($articles[$k]->INTRODUCTION()); ?></p>	
+	  						</div>
 					</div>
 					<?php } ?>			
 				</div>
-				<?php
-				$k = $k + 1;
-				}
 				
-				?>
-	
-			</div>
-			
-		<?php
-		$j = $j + 2;
-		}
-		?>
-	
-		</div>
-		<div data-spy="affix" class="subnavigation">	
-		<h4 class="title_subnavigation">See also</h4>
-		<ul class="nav nav-pills nav-stacked">
-			<?php if($lastArticles){ ?>
-					<?php foreach($lastArticles as $article)
-					{
-					?>
-					<li role="presentation"><a href="article.php?idArticle=<?php echo $article->ID_ARTICLE(); ?>"><?php echo $article->TITRE()?></a></li>					
-					<?php				
-					}
-					?>
-			<?php 
+			<?php
+			$k = $k + 1;
 			}
 			?>
-		</ul>
+		
+			</div>
 		</div>	
 	</div>
 

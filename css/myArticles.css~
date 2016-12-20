@@ -18,3 +18,23 @@ thead th, tbody td
 {
 	text-decoration: none;
 }
+
+#alert-success
+{
+	text-align: center;
+}
+
+#confirm-delete-h4, #question-delete-h4, #button-delete-h4
+{
+text-align: center;
+}
+
+#question-delete-h4
+{
+font-size: 15px;
+}
+
+.modal-header-confirm
+{
+background-color: #efefef !important;
+}

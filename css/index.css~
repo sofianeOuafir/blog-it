@@ -1,27 +1,4 @@
-body
+.see-also
 {
-width: 100%;
-}
-
-.col-md-10
-{
-margin: auto;
-}
-
-.nav-stacked
-{
-	text-align: center !important;
-	word-wrap: break-word;
-		font-size: 15px;
-}
-
-.nav-stacked li a:hover
-{
-	background-color: #e14658 !important;
-	color: #caebf2;
-}
-
-.nav-stacked li a
-{
-	color: #3c3c3c;
+border:1px black solid;
 }

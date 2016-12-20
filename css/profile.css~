@@ -1,0 +1,9 @@
+.presentation
+{
+border:1px black solid;
+}
+
+.img-circle
+{
+	width: 60%;
+}

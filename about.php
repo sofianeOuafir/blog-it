@@ -31,7 +31,7 @@ include('header.php');
 <div class="container-fluid" id="container-index">
 	<?php 
 	foreach($users as $user){ 
-	$image = $imageDescriptionManager->get($user->ID_IMAGE());
+	$image = $imageDescriptionManager->get($user->ID_IMAGE());// better getting every user in a dictionary and request the key
 	?>
 	<div class="col-md-12" id="user">
 		<div class="col-md-2">
@@ -44,7 +44,7 @@ include('header.php');
 				</div>
 				<div class="col-md-3">
 				<button type="button" class="btn default myButton" data-toggle="modal" data-target="#exampleModal" data-whatever="@<?php echo $user->PSEUDONYME(); ?>" data-id="<?php echo $user->ID_UTILISATEUR(); ?>">Send a message</button>
-				<button type="button" class="btn default myButton">See profile</button>
+				<button type="button" class="btn default myButton see-profile" value="<?php echo $user->ID_UTILISATEUR(); ?>">See profile</button>
 				</div>
 			</div>
 			<div class="col-md-12">
@@ -122,6 +122,11 @@ $('#buttonSend').click(function () {
      });
 
 });
+
+$('.see-profile').click(function () {
+	window.location.replace("profile.php?idUtilisateur=" + $(this).val());
+	});
+
 
 
 $('.nav li:nth-child(3)').addClass('active');

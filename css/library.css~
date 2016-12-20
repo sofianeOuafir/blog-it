@@ -1,38 +1,10 @@
 /* Library -------------------------------------------------------------*/
-/*.subnavigation
-{
-	text-align: center;
-	word-wrap: break-word;
-}
 
-.subnavigation li
-{
-	list-style-type: none;
-}
-.subnavigation li a
-{
-color: #3c3c3c;
-font-size: 18px;
-}
-
-.subnavigation li a:hover
-{
-color: #e14658;
-text-decoration: none;
-}
-*/
 
 .nav-stacked
 {
-	text-align: center !important;
 	word-wrap: break-word;
-		font-size: 15px;
-}
-
-.nav-stacked li a:hover
-{
-	background-color: #e14658 !important;
-	color: #caebf2;
+	font-size: 15px;
 }
 
 .nav-stacked li a
@@ -43,29 +15,24 @@ text-decoration: none;
 .title_subnavigation
 {
 	text-align: center;
-
 }
 
 .article
 {
 	text-align: center;
 	word-wrap: break-word;
-	margin-top: 10px;
 }
 
-.articles, .article
+.article, .see-also, .categories
 {
-background-color: white;
-	border-right:0.5px #a9a9a9 solid;
-	border-left:0.5px #a9a9a9 solid;
+	border:1px #a9a9a9 solid;
+
 }
 
-.affix
+.see-also, .categories
 {
-	width: 16% !important;
-	right: 54px;
+	border-radius: 5px;
 }
-
 
 
 #container-index
@@ -73,8 +40,6 @@ background-color: white;
 	margin-top:70px;
 	background-color: white;
 	width: 95%;
-	border-right:1px #a9a9a9 solid;
-	border-left:1px #a9a9a9 solid;	
 }
 
 /* Title of every articles */
@@ -86,19 +51,16 @@ color: #3c3c3c;
 
 .title:hover
 {
-color: #e14658;
-text-decoration: none;
+	color: #3c3c3c;
 }
 /* end Title of every articles */
 
 
 /* author of the article */
-.author, .preambleLink
+.preambleLink
 {
 	color:#a9a9a9;
 	font-size: 16px;
-	display: inline-block;
-	margin-right: 150px;
 }
 
 .author a, .author a:focus, .preambleLink, .preambleLink:focus
@@ -107,15 +69,12 @@ text-decoration: none;
 	text-decoration: none;
 }
 
-.author a:hover, .preambleLink:hover
-{
-	color:#e14658;
-	text-decoration: none;
-}
 
 .img-rounded
 {
-width: 100%;
+width: 60%;
+display: block;
+margin: auto;
 }
 
 /* end author of the article */
@@ -128,15 +87,15 @@ width: 100%;
 
 .myButton
 {
-background-color: #efefef;
-color:#a9a9a9;
+background-color: #20948B;
+color:white;
 font-size: 18px !important;
 }
 
 .myButton:hover
 {
-	background-color: #e14658;
-	color:#caebf2 !important;
+	background-color: #6AB187;
+	color:white !important;
 }
 
 .myButton:focus
@@ -149,4 +108,4 @@ color:#a9a9a9 !important;
 	text-align: center;
 	font-size: 18px;
 }
-/* end Library ------------------------------------------------------ */
+/* end Library ------------------------------------------------------ */color: #3c3c3c;

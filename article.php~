@@ -33,6 +33,7 @@ if($isEnabled) {
 	$categorie = $categorieManager->get($article->ID_CATEGORIE());
 	$utilisateur = $utilisateurManager->get($article->ID_UTILISATEUR());
 	$image = $imageDescriptionManager->get($article->ID_IMAGE_1());
+	$imageAuthor = $imageDescriptionManager->get($utilisateur->ID_IMAGE());
 	$dateCreation = new DateTime($article->DATE_REALISATION());
 }
 else {
@@ -77,34 +78,20 @@ else {
     ?>
     <div class="alert alert-warning alert-dismissible fade in" role="alert">
 	  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	  <strong>Reminder!</strong> This article is not published yes. Please go to <a href="myArticles.php">My articles</a> to publish it once you are ready.
+	  <strong>Reminder!</strong> This is only a preview. Your article is visible only by you for now. Would you want to make it visible ? Please go to <a href="myArticles.php">my articles</a> to publish it once it is ready!
 	</div>
     <?php
     }
     ?>
-     	<div class="blog-header">
-        <h1 class="blog-category"><?php echo $categorie->NOM_CATEGORIE(); ?></h1>
-      </div>
-
       <div class="row">
-
-        <div class="col-sm-8 blog-main">
-
-          <div class="blog-post" style="word-wrap: break-word;">
-            <h2 class="blog-post-title"><?php echo $article->TITRE(); ?></h2>
-            <p class="blog-post-meta"><?php echo $dateCreation->format('l, jS F Y'); ?> by <a href="#"><?php echo $utilisateur->PSEUDONYME(); ?></a></p>
-            <p ><img  id="image" src="<?php echo $image->SOURCE(); ?>" alt="<?php ?>"></p>
-            <p><?php echo $article->CONTENU(); ?></p>
-          </div><!-- /.blog-post -->
-        </div><!-- /.blog-main -->
-
-        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+  			<div class="col-sm-3 blog-sidebar">
           <div class="sidebar-module sidebar-module-inset">
-            <h4>About the author</h4>
-            <p><?php echo $utilisateur->INTRODUCTION() ?></p>
+          	<img id="imageAuthor" class="img-circle" src="<?php echo $imageAuthor->SOURCE() ?>" alt="<?php echo $imageAuthor->ALT() ?>">
+            <h4><strong><a href="<?php echo 'profile.php?idUtilisateur='.$utilisateur->ID_UTILISATEUR(); ?>"><?php echo $utilisateur->PSEUDONYME() ?></a></strong></h4>
+            <p id="introduction-author"><?php echo $utilisateur->INTRODUCTION() ?></p>
           </div>
           <div class="sidebar-module see-also">
-            <h4 class="title_subnavigation">See also</h4>
+            <h4 class="title_subnavigation"><strong>See also</strong></h4>
             <ul class="nav nav-pills nav-stacked">
             <?php 
             foreach($articles as $currentArticle)
@@ -116,20 +103,32 @@ else {
            ?>
             </ul>
           </div>
-          <div class="sidebar-module">
-            <h4>Share me!</h4>
+          <?php
+		    if($article->PUBLIER() == 1) 
+		    {
+		    ?>
+          <div class="sidebar-module social-media">
+            <h4><strong>Social media</strong></h4>
             <ul class="share">
               <li><div class="fb-share-button" data-href="<?php echo 'http://www.golbit.com'.$_SERVER['REQUEST_URI']; ?>" data-layout="button" data-size="large" data-mobile-iframe="false"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div></li>
             </ul>
           </div>
+          <?php
+       	 }
+       	 ?> 
         </div><!-- /.blog-sidebar -->
+
+        <div class="col-sm-8 blog-main">
+          <div class="blog-post" style="word-wrap: break-word;">
+            <h2 class="blog-post-title"><?php echo $article->TITRE(); ?></h2>
+            <p class="blog-post-meta"><?php echo $dateCreation->format('l, jS F Y'); ?> by <a href="#"><?php echo $utilisateur->PSEUDONYME(); ?></a></p>
+            <p ><img  id="image" src="<?php echo $image->SOURCE(); ?>" alt="<?php ?>"></p>
+            <p><?php echo $article->CONTENU(); ?></p>
+          </div><!-- /.blog-post -->
+        </div><!-- /.blog-main -->
 
       </div><!-- /.row -->
     </div><!-- /.container -->
-    
-    <script type="text/javascript">
-    	
-    </script>
 </body>
 
 </html>

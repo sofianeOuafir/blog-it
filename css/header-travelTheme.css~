@@ -1,44 +1,47 @@
 /* navigation bar */
 .container-fluid
 {
-	background-color: #375E97;
+	background-color: #20948B;
 }
 
 
 /* brand and main links */
 .container-fluid .navbar-header .navbar-brand, .container-fluid .navbar-collapse .navbar-nav li a {
-	color:#a9a9a9;
+	color: white;
 	font-size: 20px;
 }
 
 /* link active, link active hover */
 .container-fluid .navbar-collapse .navbar-nav .active a, .container-fluid .navbar-collapse .navbar-nav .active a:hover
 {
-	background-color: #e14658;
-	color:#caebf2;
+	background-color: #6AB187;
 }
 
 /* signed in as... */
-.container-fluid .navbar-collapse .navbar-text 
+.container-fluid .navbar-collapse .navbar-text, .container-fluid .navbar-collapse .navbar-text a
 {
 	font-size: 15px;
-	color:#a9a9a9;
+	color:white;
 }
 
 /* link hover and brand hover */
-.container-fluid .navbar-collapse .navbar-nav li a:hover
+.container-fluid .navbar-collapse .navbar-nav li a:hover, .container-fluid .navbar-collapse .navbar-nav li a:focus
 {
-	background-color: #e14658;
-	color: #caebf2;
+	background-color: #6AB187;
+	color: white;
 }
 
 .container-fluid .navbar-header .navbar-brand:focus, .container-fluid .navbar-header .navbar-brand:hover
 {
-color:#a9a9a9;
+color:white;
 }
 .badge
 {
-background-color: #e14658 !important;
+background-color: #6AB187 !important;
 margin-top: -5px;
 }
 
+.dropdown-menu li
+{
+background-color: #20948B !important;
+}
